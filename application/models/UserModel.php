@@ -16,5 +16,18 @@ class UserModel extends CI_Model {
 		$query = $this->db->query("SELECT * FROM user");
 		return $query->result_array();
 	}
+
+	public function create(){
+
+		$data = array(
+			'username' => $this->input->post('username'),
+			'email' => $this->input->post('email'),
+			'password' => $this->input->post('password')
+			);
+
+		$queryString = "INSERT INTO user (email, username, password) VALUE ('".$data['email']."','".$data['username']."','".$data['password']."')";
+		$this->db->query($queryString);
+		return $data['username'];
+	}
 }
 ?>
