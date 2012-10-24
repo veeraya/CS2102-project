@@ -29,5 +29,20 @@ class UserModel extends CI_Model {
 		$this->db->query($queryString);
 		return $data['username'];
 	}
+
+	public function edit(){
+		$data = array(
+			'oldUsername' => $this->input->post('oldUsername'),
+			'username' => $this->input->post('username'),
+			'email' => $this->input->post('email'),
+			'password' => $this->input->post('password')
+			);
+
+		$queryString = "UPDATE user SET username = '".$data['username']."', email = '".$data['email']."', password = '".$data['password']."' WHERE username = '".$data['oldUsername']."'";  
+		echo $queryString."\n";
+		$this->db->query($queryString);
+		echo "returning ".$data['username'];
+		return $data['username'];
+	}
 }
 ?>

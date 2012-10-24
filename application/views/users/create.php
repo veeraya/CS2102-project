@@ -1,4 +1,4 @@
-<h2>Create a news item</h2>
+<h2>Sign up</h2>
 
 <?php echo validation_errors(); ?>
 
