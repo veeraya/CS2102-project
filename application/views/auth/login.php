@@ -1,4 +1,3 @@
-hello world
 <form action="<?php echo base_url(); ?>index.php/auth/processLogin" method="post" name="processLogin">
 	
 	<?php if (!is_null($errorMsg)) echo $errorMsg; ?>

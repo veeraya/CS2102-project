@@ -2,22 +2,30 @@
 class Users extends CI_Controller{
 
 	public function __construct(){
+
 		parent::__construct();
 		$this->load->model('UserModel');
 	}
 
 	public function index(){
+
 		$data['users'] = $this->UserModel->getAllUsers();
 		$this->load->view('users/index', $data);
 	}
 
 	public function view($username){
+		if ($this->session->userdata('username')){
 		$data['user'] = $this->UserModel->getUserByUsername($username);
 		$this->load->view('users/view', $data);
+		}
+		else{
+			$errorMsg = "You need to log-in to view this page<br />";
+			$this->session->set_flashdata('errorMsg', $errorMsg);
+			redirect('auth/login');
+		}
 	}
 
 	public function create(){
-
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -35,6 +43,7 @@ class Users extends CI_Controller{
 	}
 
 	public function edit($username){
+
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
