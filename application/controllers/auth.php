@@ -6,8 +6,8 @@ class Auth extends CI_Controller{
 		$this->load->model('AuthModel');
 	}
 
-	public function login($errorMsg = NULL){
-		$data['errorMsg'] = $errorMsg;
+	public function login(){
+		$data['errorMsg'] = $this->session->flashdata('errorMsg');
 		$this->load->view('auth/login', $data);
 	}
 
@@ -18,7 +18,8 @@ class Auth extends CI_Controller{
 		}
 		else {
 			$errorMsg = "Wrong email/password combination<br />";
-			$this->login($errorMsg);
+			$this->session->set_flashdata('errorMsg', $errorMsg);
+			redirect('auth/login');
 		}
 	}
 }
