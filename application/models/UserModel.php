@@ -6,14 +6,14 @@ class UserModel extends CI_Model {
 	}
 
 	public function getUserByUsername($username){
-		$queryString = "SELECT * FROM user WHERE username = '".$username."'";
+		$queryString = "SELECT * FROM users WHERE username = '".$username."'";
 		$query = $this->db->query($queryString);
 		return $query->row_array();
 
 	}
 
 	public function getAllUsers(){
-		$query = $this->db->query("SELECT * FROM user");
+		$query = $this->db->query("SELECT * FROM users");
 		return $query->result_array();
 	}
 
@@ -25,12 +25,13 @@ class UserModel extends CI_Model {
 			'password' => $this->input->post('password')
 			);
 
-		$queryString = "INSERT INTO user (email, username, password) VALUE ('".$data['email']."','".$data['username']."','".$data['password']."')";
+		$queryString = "INSERT INTO users (email, username, password) VALUE ('".$data['email']."','".$data['username']."','".$data['password']."')";
 		$this->db->query($queryString);
 		return $data['username'];
 	}
 
 	public function edit(){
+		
 		$data = array(
 			'oldUsername' => $this->input->post('oldUsername'),
 			'username' => $this->input->post('username'),
