@@ -8,7 +8,9 @@ class Auth extends CI_Controller{
 
 	public function login(){
 		$data['errorMsg'] = $this->session->flashdata('errorMsg');
+		$this->load->view('templates/header');
 		$this->load->view('auth/login', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function processLogin(){

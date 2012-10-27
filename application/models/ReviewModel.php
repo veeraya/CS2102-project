@@ -24,7 +24,7 @@ class ReviewModel extends CI_Model{
 
 	public function getAllReviews(){
 		$queryString = "SELECT * FROM reviews";
-		$this->db->query($queryString);
+		$query = $this->db->query($queryString);
 		return $query->result_array();
 	}
 

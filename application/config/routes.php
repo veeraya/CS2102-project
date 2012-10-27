@@ -43,6 +43,8 @@ $route['404_override'] = '';
 $route['restaurants/(:any)/reviews'] = 'Reviews/viewByRestaurant/$1';
 $route['restaurants/(:any)/createReview'] = 'Reviews/create/$1';
 $route['restaurants/(:any)/processCreateReview'] = 'Reviews/processCreate/$1';
+$route['restaurants/create'] = 'Restaurants/create';
+$route['restaurants/createRestaurant'] = 'Restaurants/createRestaurant';
 $route['restaurants/(:any)'] = 'Restaurants/view/$1';
 $route['restaurants'] = 'Restaurants/index';
 

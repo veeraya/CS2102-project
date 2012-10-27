@@ -6,5 +6,5 @@
 	<label for="postalCode">Postal Code</label><br />
 	<input type="text" name="postalCode" id="postalCode" /><br />
 
-	<input type="submit" value="Login" />
+	<input type="submit" value="Create" />
 </form>

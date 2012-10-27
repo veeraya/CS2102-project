@@ -9,16 +9,22 @@ class Restaurants extends CI_Controller{
 	public function index(){
 
 		$data['restaurants'] = $this->RestaurantModel->getAllRestaurants();
+		$this->load->view('templates/header');
 		$this->load->view('restaurants/index', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function view($url){
 		$data['restaurant'] = $this->RestaurantModel->getRestaurantByUrl($url);
+		$this->load->view('templates/header');
 		$this->load->view('restaurants/view', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function create(){
+		$this->load->view('templates/header');
 		$this->load->view('restaurants/create');
+		$this->load->view('templates/footer');
 	}
 
 	public function createRestaurant(){

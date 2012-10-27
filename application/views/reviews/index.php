@@ -1,0 +1,11 @@
+<?php foreach ($reviews as $review): ?>
+
+	<b><?php echo $review['title'] ?></b><br />
+	<?php echo $review['user_email'] ?> reviews <?php echo $review['restaurant_name'] ?><br /> 
+	<?php echo $review['title'] ?><br />
+	<b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
+	<b>Service rating:</b> <?php echo $review['service_rating'] ?><br />
+	<b>Recommend:</b> <?php echo $review['recommend'] ?><br />
+	<br /><br />
+
+<?php endforeach ?>
