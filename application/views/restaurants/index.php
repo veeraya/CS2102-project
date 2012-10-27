@@ -1,3 +1,4 @@
+<a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
 <?php foreach ($restaurants as $restaurant): ?>
 
     <h3><?php echo $restaurant['name'] ?></h3>

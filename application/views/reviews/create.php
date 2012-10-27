@@ -1,9 +1,9 @@
 <form action="<?php echo base_url(); ?>index.php/restaurants/<? echo $restaurantUrl ?>/processCreateReview" method="post" name="processCreateReview">
 	<h2>Submit a review</h2>
 	<label for="title">Title</label>
-	<input type="text" name="title" id="title"/><br />
+	<input type="text" name="title" id="title" class="input-xxlarge"/><br />
 	<label for="content">Content</label>
-	<input type="text" name="content" id="content"/><br />
+	<textarea name="content" id="content" rows="8" class="input-xxlarge"></textarea><br />
 	<label for="foodRating">Food Rating</label>
 	<select name="foodRating"> 
 	  <option value="1" >1</option>
