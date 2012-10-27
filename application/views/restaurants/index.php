@@ -2,8 +2,8 @@
 
     <h2><?php echo $restaurant['name'] ?></h2>
     <div id="main">
-        <?php echo $restaurant['postalCode'] ?>
+        <?php echo $restaurant['postal_code'] ?>
     </div>
-    <p><a href="view/<?php echo $restaurant['url'] ?>">View this restaurant</a></p>
+    <p><a href="restaurants/view/<?php echo $restaurant['url'] ?>">View this restaurant</a></p>
 
 <?php endforeach ?>

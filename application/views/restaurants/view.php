@@ -2,5 +2,5 @@
 	<?php echo $restaurant['name'] ?>
 </h2>
 <div id="main">
-	<?php echo $restaurant['postalCode'] ?>
+	<?php echo $restaurant['postal_code'] ?>
 </div>

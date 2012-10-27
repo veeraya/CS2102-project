@@ -1,9 +1,9 @@
 <?php foreach ($users as $user): ?>
 
-    <h2><?php echo $user['email'] ?></h2>
+    <h2>Email: <?php echo $user['email'] ?></h2>
     <div id="main">
-        <?php echo $user['username'] ?>
+        Username: <?php echo $user['username'] ?>
     </div>
-    <p><a href="users/<?php echo $user['url'] ?>">View user</a></p>
+    <p><a href="users/view/<?php echo $user['username'] ?>">View user</a></p>
 
 <?php endforeach ?>

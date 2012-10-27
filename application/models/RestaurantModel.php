@@ -10,7 +10,7 @@ class RestaurantModel extends CI_Model {
 		$postalCode = $this->input->post('postalCode');
 		$url = url_title($name." ".$postalCode, 'dash', TRUE);	
 		
-		$queryString = "INSERT INTO restaurants (name, postalCode, url) VALUE(?,?,?)";
+		$queryString = "INSERT INTO restaurants (name, postal_code, url) VALUE(?,?,?)";
 		$this->db->query($queryString, array($name, $postalCode, $url));
 		return $url;
 	}
