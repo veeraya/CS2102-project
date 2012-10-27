@@ -23,8 +23,7 @@ class Restaurants extends CI_Controller{
 
 	public function createRestaurant(){
 		$url = $this->RestaurantModel->create();
-		redirect('restaurants/view/'.$url);
+		redirect('restaurants/'.$url);
 	}
-
 }
  ?>

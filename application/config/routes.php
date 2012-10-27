@@ -40,6 +40,13 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+$route['restaurants/(:any)/reviews'] = 'Reviews/viewByRestaurant/$1';
+$route['restaurants/(:any)/createReview'] = 'Reviews/create/$1';
+$route['restaurants/(:any)/processCreateReview'] = 'Reviews/processCreate/$1';
+$route['restaurants/(:any)'] = 'Restaurants/view/$1';
+$route['restaurants'] = 'Restaurants/index';
+
+
 
 
 /* End of file routes.php */
