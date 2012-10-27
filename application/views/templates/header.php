@@ -20,19 +20,28 @@
               
                 <?php if (!$this->session->userdata('username')) {
                   $loginUrl = base_url()."index.php/auth/processLogin";
+                  $signupUrl = base_url()."index.php/users/create";
                 echo <<<"EOT"
+                <ul class="nav pull-right">
+                  <li><a href="$signupUrl">Sign up!</a></li>
+                  </ul>
                 <form class="navbar-form pull-right" action="$loginUrl" method="post" name="processLogin">
                   <input class="span2" type="text" name="email" placeholder="Email">
                   <input class="span2" type="password" name="password" placeholder="Password">
-                  <button type="submit" class="btn">Sign in</button>
+                  <button type="submit" class="btn">Log in</button>
                 </form>
+
+               
 EOT;
 
                 }
                 else {
                   $logoutUrl = base_url()."index.php/auth/logout";
+                  $username = $this->session->userdata('username');
+                  $profileUrl = base_url()."index.php/users/view/".$username;
                   echo <<<"ABC"
                   <ul class="nav pull-right">
+                  <li><a href="$profileUrl">Dashboard</a>
                   <li><a href="$logoutUrl">Logout</a></li>
                   </ul>
 ABC;

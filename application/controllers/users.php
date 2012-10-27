@@ -45,8 +45,10 @@ class Users extends CI_Controller{
 
 		}
 		else{
-			$username = $this->UserModel->create();
-			$this->view($username);
+			$user = $this->UserModel->create();
+			$this->session->set_userdata($user);
+			redirect('users/view/'.$user[username]);
+			
 		}
 	}
 
@@ -67,8 +69,9 @@ class Users extends CI_Controller{
 
 		}
 		else{
-			$username = $this->UserModel->edit();
-			$this->view($username);
+			$user = $this->UserModel->edit();
+			$this->session->set_userdata($user);
+			redirect('users/view/'.$user[username]);
 		}
 	}
 }

@@ -1,9 +1,9 @@
 <?php foreach ($restaurants as $restaurant): ?>
 
-    <h2><?php echo $restaurant['name'] ?></h2>
-    <div id="main">
-        <?php echo $restaurant['postal_code'] ?>
-    </div>
-    <p><a href="restaurants/<?php echo $restaurant['url'] ?>">View this restaurant</a></p>
+    <h3><?php echo $restaurant['name'] ?></h3>
+    Postal code: <?php echo $restaurant['postal_code'] ?><br />
+    
+    <a href="restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
+    <a href="restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
 
 <?php endforeach ?>

@@ -1,6 +1,7 @@
+<h2>All reviews for this restaurant</h2>
 <?php foreach ($reviews as $review): ?>
 
-    <h2><?php echo $review['title'] ?></h2>
+    <h3><?php echo $review['title'] ?></h3>
     <div id="main">
     	Reviewed by: <?php echo $review['user_email'] ?><br />
         Content: <?php echo $review['content'] ?><br />

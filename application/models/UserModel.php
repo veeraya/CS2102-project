@@ -27,7 +27,8 @@ class UserModel extends CI_Model {
 
 		$queryString = "INSERT INTO users (email, username, password) VALUE ('".$data['email']."','".$data['username']."','".$data['password']."')";
 		$this->db->query($queryString);
-		return $data['username'];
+
+		return $data;
 	}
 
 	public function edit(){
@@ -39,11 +40,9 @@ class UserModel extends CI_Model {
 			'password' => $this->input->post('password')
 			);
 
-		$queryString = "UPDATE user SET username = '".$data['username']."', email = '".$data['email']."', password = '".$data['password']."' WHERE username = '".$data['oldUsername']."'";  
-		echo $queryString."\n";
+		$queryString = "UPDATE users SET username = '".$data['username']."', email = '".$data['email']."', password = '".$data['password']."' WHERE username = '".$data['oldUsername']."'";  
 		$this->db->query($queryString);
-		echo "returning ".$data['username'];
-		return $data['username'];
+		return $data;
 	}
 }
 ?>
