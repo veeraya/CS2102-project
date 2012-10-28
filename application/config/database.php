@@ -45,40 +45,42 @@
 | the active record class
 */
 
-$active_group = 'local';
+$active_group = ENVIRONMENT;
 $active_record = FALSE;
 
-$db['local']['hostname'] = 'localhost';
-$db['local']['username'] = 'root';
-$db['local']['password'] = '';
-$db['local']['database'] = 'cs2102';
-$db['local']['dbdriver'] = 'mysql';
-$db['local']['dbprefix'] = '';
-$db['local']['pconnect'] = TRUE;
-$db['local']['db_debug'] = TRUE;
-$db['local']['cache_on'] = FALSE;
-$db['local']['cachedir'] = '';
-$db['local']['char_set'] = 'utf8';
-$db['local']['dbcollat'] = 'utf8_unicode_ci';
-$db['local']['swap_pre'] = '';
-$db['local']['autoinit'] = TRUE;
-$db['local']['stricton'] = FALSE;
+/* db setting for local server */
+$db['development']['hostname'] = 'localhost';
+$db['development']['username'] = 'root';
+$db['development']['password'] = '';
+$db['development']['database'] = 'cs2102';
+$db['development']['dbdriver'] = 'mysql';
+$db['development']['dbprefix'] = '';
+$db['development']['pconnect'] = TRUE;
+$db['development']['db_debug'] = TRUE;
+$db['development']['cache_on'] = FALSE;
+$db['development']['cachedir'] = '';
+$db['development']['char_set'] = 'utf8';
+$db['development']['dbcollat'] = 'utf8_unicode_ci';
+$db['development']['swap_pre'] = '';
+$db['development']['autoinit'] = TRUE;
+$db['development']['stricton'] = FALSE;
 
-$db['remote']['hostname'] = 'localhost';
-$db['remote']['username'] = 'pookin';
-$db['remote']['password'] = 'nuscs2102';
-$db['remote']['database'] = 'pookin_cs2102';
-$db['remote']['dbdriver'] = 'mysql';
-$db['remote']['dbprefix'] = '';
-$db['remote']['pconnect'] = TRUE;
-$db['remote']['db_debug'] = TRUE;
-$db['remote']['cache_on'] = FALSE;
-$db['remote']['cachedir'] = '';
-$db['remote']['char_set'] = 'utf8';
-$db['remote']['dbcollat'] = 'utf8_unicode_ci';
-$db['remote']['swap_pre'] = '';
-$db['remote']['autoinit'] = TRUE;
-$db['remote']['stricton'] = FALSE;
+/* db setting for remote server */
+$db['production']['hostname'] = 'localhost';
+$db['production']['username'] = 'pookin';
+$db['production']['password'] = 'nuscs2102';
+$db['production']['database'] = 'pookin_cs2102';
+$db['production']['dbdriver'] = 'mysql';
+$db['production']['dbprefix'] = '';
+$db['production']['pconnect'] = TRUE;
+$db['production']['db_debug'] = TRUE;
+$db['production']['cache_on'] = FALSE;
+$db['production']['cachedir'] = '';
+$db['production']['char_set'] = 'utf8';
+$db['production']['dbcollat'] = 'utf8_unicode_ci';
+$db['production']['swap_pre'] = '';
+$db['production']['autoinit'] = TRUE;
+$db['production']['stricton'] = FALSE;
 
 
 /* End of file database.php */
