@@ -9,3 +9,4 @@
 
 	<input type="submit" value="Login" />
 </form>
+  No account? <a href="<?php echo base_url(); ?>index.php/users/create">Sign up here.</a>

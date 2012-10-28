@@ -45,6 +45,7 @@
 | the active record class
 */
 
+// environment is set in index.php
 $active_group = ENVIRONMENT;
 $active_record = FALSE;
 
