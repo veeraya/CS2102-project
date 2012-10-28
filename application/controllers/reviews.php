@@ -25,7 +25,6 @@ class Reviews extends CI_Controller{
 
 	public function create($restaurantUrl){
 		if ($this->session->userdata('username')){
-			echo "helloo";
 			$data['restaurantUrl'] = $restaurantUrl;
 			$this->load->view('templates/header');
 			$this->load->view('reviews/create', $data);

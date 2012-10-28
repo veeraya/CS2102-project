@@ -40,13 +40,13 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-$route['restaurants/(:any)/reviews'] = 'Reviews/viewByRestaurant/$1';
-$route['restaurants/(:any)/createReview'] = 'Reviews/create/$1';
-$route['restaurants/(:any)/processCreateReview'] = 'Reviews/processCreate/$1';
-$route['restaurants/create'] = 'Restaurants/create';
-$route['restaurants/createRestaurant'] = 'Restaurants/createRestaurant';
-$route['restaurants/(:any)'] = 'Restaurants/view/$1';
-$route['restaurants'] = 'Restaurants/index';
+$route['restaurants/(:any)/reviews'] = 'reviews/viewbyrestaurant/$1';
+$route['restaurants/(:any)/createReview'] = 'reviews/create/$1';
+$route['restaurants/(:any)/processCreateReview'] = 'reviews/processcreate/$1';
+$route['restaurants/create'] = 'restaurants/create';
+$route['restaurants/createRestaurant'] = 'restaurants/createrestaurant';
+$route['restaurants/(:any)'] = 'restaurants/view/$1';
+$route['restaurants'] = 'restaurants/index';
 
 
 

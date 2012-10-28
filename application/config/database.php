@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'remote';
+$active_group = 'local';
 $active_record = FALSE;
 
 $db['local']['hostname'] = 'localhost';
@@ -64,9 +64,9 @@ $db['local']['swap_pre'] = '';
 $db['local']['autoinit'] = TRUE;
 $db['local']['stricton'] = FALSE;
 
-$db['remote']['hostname'] = 'pook.in';
-$db['remote']['username'] = 'root';
-$db['remote']['password'] = '';
+$db['remote']['hostname'] = 'localhost';
+$db['remote']['username'] = 'pookin';
+$db['remote']['password'] = 'nuscs2102';
 $db['remote']['database'] = 'pookin_cs2102';
 $db['remote']['dbdriver'] = 'mysql';
 $db['remote']['dbprefix'] = '';
