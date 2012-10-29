@@ -19,12 +19,12 @@ Tech stack:
 
 ###Database
 Configure your database setting in ```application/config/database.php```
+
 Create a new database and import schema/data from the file ```sampleData.sql``` through phpMyAdmin or any other ways.
 
 ###Routing
 
-**Restaurants** and **reviews** controllers use custom routing specified in 
-```application/config/routes.php```
+**Restaurants** and **reviews** controllers use custom routing specified in ```application/config/routes.php```
 
 Other controllers use default CodeIgniter routing in the form of ```http://example.com/index.php/controller_name/function_name/parameter```
 
