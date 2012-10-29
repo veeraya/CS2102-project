@@ -32,7 +32,7 @@ will calll view function in users controller, passing in "harrypotter" as parame
 ###Other notes
 Data is passed from the controller to the view in form of an array. Example below:
 
-```
+```php
 // controllers/restaurants.php
 $data['restaurants'] = $this->RestaurantModel->getAllRestaurants();
 $this->load->view('templates/header');
@@ -40,7 +40,7 @@ $this->load->view('restaurants/index', $data);
 $this->load->view('templates/footer');
 ```
 
-```
+```php
 // views/restaurants/index.php
 <?php foreach ($restaurants as $restaurant): ?>
     <h3><?php echo $restaurant['name'] ?></h3>
@@ -48,7 +48,7 @@ $this->load->view('templates/footer');
 ```
 
 You can convert the data passed into the view to a json format via something like this:
-```
+```php
 <?php echo json_encode($restaurants) ?>
 ```
 
