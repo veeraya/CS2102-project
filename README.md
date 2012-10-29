@@ -21,13 +21,13 @@ Tech stack:
 
 ###Routing
 
-Restaurants and reviews controllers use custom routing specified in 
-application/config/routes.php
+**Restaurants** and **reviews** controllers use custom routing specified in 
+*application/config/routes.php*
 
-Other controllers use default CodeIgniter routing in the form of *http://example.com/index.php/controller_name/function_name/parameter* 
+Other controllers use default CodeIgniter routing in the form of *http://example.com/index.php/controller_name/function_name/parameter*
 
 For example, *http://localhost/cs2102/index.php/users/view/harrypotter*
-will calll view function in users controller, passing in "harrypotter" as parameter.
+will call *view function* in *users controller*, passing in *"harrypotter" as parameter*.
 
 ###Other notes
 Data is passed from the controller to the view in form of an array. Example below:
