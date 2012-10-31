@@ -1,97 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
-<head profile="http://gmpg.org/xfn/11">
-<title>PhotoProwess</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta http-equiv="imagetoolbar" content="no" />
-<link rel="stylesheet" href="assets/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="assets/scripts/jquery-1.4.1.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.defaultvalue.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery-ui-1.8.13.custom.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.scrollTo-min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-    $("#fullname, #validemail, #message").defaultvalue("Full Name", "Email Address", "Message");
-    $('#shout a').click(function () {
-        var to = $(this).attr('href');
-        $.scrollTo(to, 1200);
-        return false;
-    });
-    $('a.topOfPage').click(function () {
-        $.scrollTo(0, 1200);
-        return false;
-    });
-    $("#tabcontainer").tabs({
-        event: "click"
-    });
-});
-</script>
-<!-- Homepage Only Scripts -->
-<script type="text/javascript" src="assets/scripts/jquery.cycle.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.cycle.setup.js"></script>
-<script type="text/javascript" src="assets/scripts/piecemaker/swfobject/swfobject.js"></script>
-<script type="text/javascript">
-var flashvars = {};
-flashvars.cssSource = "assets/scripts/piecemaker/piecemaker.css";
-flashvars.xmlSource = "assets/scripts/piecemaker/piecemaker.xml";
-var params = {};
-params.play = "false";
-params.menu = "false";
-params.scale = "showall";
-params.wmode = "transparent";
-params.allowfullscreen = "true";
-params.allowscriptaccess = "sameDomain";
-params.allownetworking = "all";
-swfobject.embedSWF('assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '960', '430', '10', null, flashvars, params, null);
-</script>
-<!-- End Homepage Only Scripts -->
-</head>
-<body id="top">
-<div class="wrapper col1">
-  <div id="topbar" class="clear">
-      <ul class="nav pull-right">
-        <li></li>
-      </ul>
-      <span float="right">
-      <form class="navbar-form pull-right" action="http://pook.in/CS2102-project/index.php/auth/processLogin" method="post" name="processLogin" id="search">
-        <input class="span2" type="text" name="email" id="email" placeholder="Email">
-        <input class="span2" type="password" name="password" placeholder="Password">
-        <button type="submit" class="btn" id="login">Log in</button>
-          <a href="http://pook.in/CS2102-project/index.php/users/create">Sign up!</a>
-      </form>
-    
-      </span>
 
-  </div>
-</div>
-<!-- ####################################################################################################### -->
-<div class="wrapper col2">
-  <div id="header" class="clear">
-    <div class="fl_left">
-      <h1><a href="index.html">WTF!</a></h1>
-      <p>Where's The Food</p>
-    </div>
-    <div id="topnav">
-      <ul>
-        <li><a href="#">Add Restaurant</a></li>
-        <li><a href="#">Add a Review</a></li>
-        <li><a href="#">Profile</a></li>
-        <li class="active"><a href="homepage.html">Homepage</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- ####################################################################################################### -->
 <div class="wrapper col3">
   <div id="featured_slide">
+  <div id="homepage">
     <!-- ####################################################################################################### -->
     <!--<div id="piecemaker"> <img src="assets/images/demo/piecemaker/960x360.gif" alt="" /> </div>-->
-    <div id="hpage_slider" class="clear" style="display:inline-block;">
-          <div class="item"><img src="assets/images/demo/featured-project/1.gif" alt="" width="960px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/2.gif" alt="" width="960px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/3.gif" alt="" width="960px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/4.gif" alt="" width="960px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/5.gif" alt="" width="960px" height="360px"/></div>
+    <div id="hpage_slider" class="clear" style="width:960px; height:380px;">
+          <div class="item"><img src="assets/images/demo/featured-project/1.gif" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/2.gif" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/3.gif" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/4.gif" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/5.gif" alt="" width="940px" height="360px"/></div>
+        </div>
         </div>
     <!-- ####################################################################################################### -->
   </div>
@@ -169,54 +88,3 @@ swfobject.embedSWF('assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '96
   </div>
 </div>
 <!-- ####################################################################################################### -->
-<div class="wrapper">
-  <div id="footer" class="clear">
-    <div class="fl_left">
-      <div class="about_us border">
-        <h2>About Us</h2>
-        <p>Sednulla nam nibh a nibh eu urna facinia mauristibulus sit urna. Vitaerisus lobortis proin elit et curabituris elit estibulum cursus iacus orci. Dignissimmorbi rhoncus sed netus ligula conseque netus nulla aliquat id dui. Ipsumintesque venean hendiment enim nis maecenas justo justo vitae purus sed. Rutrumcondimentumsan elit.</p><br><br><br><br><br><br><br><br>
-      </div>
-    </div>
-    <div class="f1_right">
-      <div id="contact" class="clear">
-        <h2>Contact Us</h2>
-        <div class="fl_left">
-          <form method="post" action="#">
-            <label for="fullname">Name:</label>
-            <input type="text" name="fullname" id="fullname" value="" />
-            <label for="validemail">Email:</label>
-            <input type="text" name="validemail" id="validemail" value="" />
-            <label for="message">Message:</label>
-            <textarea name="message" id="message" cols="45" rows="10"></textarea>
-            <button type="submit" value="submit"><span>Submit</span></button>
-          </form>
-        </div>
-        <div class="fl_right">
-          <address>
-          <strong class="title">Company Name</strong><br />
-          Street Name &amp; Number<br />
-          Town<br />
-          Postcode/Zip
-          </address>
-          <ul>
-            <li><strong class="title">Tel:</strong><br />
-              xxxxx xxxxxxxxxx</li>
-            <li><strong class="title">Fax:</strong><br />
-              xxxxx xxxxxxxxxx</li>
-            <li><strong class="title">Email:</strong><br />
-              <a href="#">contact@mydomain.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- ####################################################################################################### -->
-  <div id="backtotop"><a href="#top" class="topOfPage">To The Top</a></div>
-</div>
-<!-- ####################################################################################################### -->
-<div class="wrapper">
-  <div id="copyright" class="clear">
-    <p class="fl_left">Copyright &copy; 2011 - All Rights Reserved - <a href="#">Domain Name</a></p>
-  </div>
-</div>
-</body>
-</html>
