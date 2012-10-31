@@ -4,11 +4,11 @@
 <title>PhotoProwess</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="imagetoolbar" content="no" />
-<link rel="stylesheet" href="assets/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="assets/scripts/jquery-1.4.1.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.defaultvalue.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery-ui-1.8.13.custom.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.scrollTo-min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url() ?>/assets/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery.defaultvalue.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery.scrollTo-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
     $("#fullname, #validemail, #message").defaultvalue("Full Name", "Email Address", "Message");
@@ -27,13 +27,13 @@ $(document).ready(function () {
 });
 </script>
 <!-- Homepage Only Scripts -->
-<script type="text/javascript" src="assets/scripts/jquery.cycle.min.js"></script>
-<script type="text/javascript" src="assets/scripts/jquery.cycle.setup.js"></script>
-<script type="text/javascript" src="assets/scripts/piecemaker/swfobject/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery.cycle.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/jquery.cycle.setup.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/scripts/piecemaker/swfobject/swfobject.js"></script>
 <script type="text/javascript">
 var flashvars = {};
-flashvars.cssSource = "assets/scripts/piecemaker/piecemaker.css";
-flashvars.xmlSource = "assets/scripts/piecemaker/piecemaker.xml";
+flashvars.cssSource = "<?php echo base_url() ?>/assets/scripts/piecemaker/piecemaker.css";
+flashvars.xmlSource = "<?php echo base_url() ?>/assets/scripts/piecemaker/piecemaker.xml";
 var params = {};
 params.play = "false";
 params.menu = "false";
@@ -42,7 +42,7 @@ params.wmode = "transparent";
 params.allowfullscreen = "true";
 params.allowscriptaccess = "sameDomain";
 params.allownetworking = "all";
-swfobject.embedSWF('assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '960', '430', '10', null, flashvars, params, null);
+swfobject.embedSWF('<?php echo base_url() ?>/assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '960', '430', '10', null, flashvars, params, null);
 </script>
 <!-- End Homepage Only Scripts -->
 </head>
