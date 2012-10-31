@@ -43,17 +43,21 @@
         <h2>Search</h2>
         <form action="#" method="post" id="search_body">
           <fieldset>
-            <input type="text" id="Name" value="Name of Restaurant/ Dish&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;')? '' : this.value ;" />
+          <label>Name of Restaurant/ Dish:</label>
+            <input type="text" id="Name" value="Name of Restaurant/ Dish&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
             
             </br>
-             </br> 
-            <input type="text" id="Cuisine" value="Cuisine&hellip;" onfocus="this.value=(this.value=='Cuisine&hellip;')? '' : this.value ;" />
+             </br> </br> 
+             <label>Cuisine:</label></br>
+            <input type="text" id="Cuisine" value="e.g. Chinese, French, Malay&hellip;" onfocus="this.value=(this.value=='e.g. Chinese, French, Malay&hellip;')? '' : this.value ;" />
             </br>
              </br> 
-            <input type="text" id="Location" value="Location&hellip;" onfocus="this.value=(this.value=='Location&hellip;')? '' : this.value ;" />
+             <label>Location:</label></br>
+            <input type="text" id="Location" value="e.g. Pasir Ris, Bugis&hellip;" onfocus="this.value=(this.value=='e.g. Pasir Ris, Bugis&hellip;')? '' : this.value ;" />
             </br>
              </br> 
-            <input type="text" id="Category" value="Category&hellip;" onfocus="this.value=(this.value=='Category&hellip;')? '' : this.value ;" />
+             <label>Category:</label></br>
+            <input type="text" id="Category" value="e.g. Dessert, Main Course&hellip;" onfocus="this.value=(this.value=='e.g. Dessert, Main Course&hellip;')? '' : this.value ;" />
             <input type="Submit" id="subscribe" src="images/sign-up.gif" value="Search" alt="Submit" />
           </fieldset>
         </form>

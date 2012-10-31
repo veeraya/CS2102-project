@@ -57,7 +57,7 @@ swfobject.embedSWF('assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '96
         <input class="span2" type="text" name="email" id="email" placeholder="Email">
         <input class="span2" type="password" name="password" placeholder="Password">
         <button type="submit" class="btn" id="login">Log in</button>
-          <a href="http://pook.in/CS2102-project/index.php/users/create">Sign up!</a>
+          <a href="localhost/index.php/users/create">Sign up!</a>
       </form>
     
       </span>
