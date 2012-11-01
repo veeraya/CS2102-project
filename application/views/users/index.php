@@ -1,3 +1,4 @@
+<div class="container_12">
 <?php foreach ($users as $user): ?>
 
     <b>Email:</b> <?php echo $user['email'] ?><br />
@@ -11,3 +12,4 @@
     ?>
 
 <?php endforeach ?>
+</div>

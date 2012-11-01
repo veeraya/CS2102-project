@@ -1,3 +1,4 @@
+<div class="container_12">
 <h2>My Profile</h2>
 <p>
 Username: <?php echo $user['username'] ?> <br />
@@ -8,3 +9,4 @@ Email: <?php echo $user['email'] ?> <br /> <br />
 	}
 ?>
 </p>
+</div>

@@ -1,3 +1,4 @@
+<div class="container_12">
 <h2>All reviews</h2>
 <?php foreach ($reviews as $review): ?>
 
@@ -10,3 +11,4 @@
 	<br /><br />
 
 <?php endforeach ?>
+</div>

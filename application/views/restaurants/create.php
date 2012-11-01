@@ -1,3 +1,4 @@
+<div class="container_12">
 <form action="<?php echo base_url(); ?>index.php/restaurants/createRestaurant" method="post" name="createRestaurant">
 	<h2>Add a restaurant</h2>
 	<label for="name">Name</label>
@@ -8,3 +9,4 @@
 
 	<input type="submit" class="btn" value="Create" />
 </form>
+</div>

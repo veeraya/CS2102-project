@@ -1,3 +1,4 @@
+<div class="container_12">
 <h2>All reviews for this restaurant</h2>
 <?php foreach ($reviews as $review): ?>
 
@@ -8,3 +9,4 @@
     <b>Service Rating:</b> <?php echo $review['service_rating'] ?><br />
     <b>Recommend?:</b> <?php echo $review['recommend'] ?><br />
 <?php endforeach ?>
+</div>

@@ -1,4 +1,4 @@
-
+<div class="container_12">
 
 <?php echo validation_errors(); ?>
 
@@ -16,3 +16,4 @@
 	<input type="submit" name="submit" class="btn" value="Sign up" /> 
 
 </form>
+</div>

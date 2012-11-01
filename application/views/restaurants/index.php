@@ -1,3 +1,4 @@
+<div class="container_12">
 <a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
 <?php foreach ($restaurants as $restaurant): ?>
 
@@ -8,3 +9,4 @@
     <a href="restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
 
 <?php endforeach ?>
+</div>

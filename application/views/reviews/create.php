@@ -1,3 +1,4 @@
+<div class="container_12">
 <form action="<?php echo base_url(); ?>index.php/restaurants/<? echo $restaurantUrl ?>/processCreateReview" method="post" name="processCreateReview">
 	<h2>Submit a review</h2>
 	<label for="title">Title</label>
@@ -28,3 +29,4 @@
 
 	<input type="submit" class="btn" value="Submit" />
 </form>
+</div>

@@ -1,3 +1,4 @@
+<div class="container_12">
 <h2>Edit profile</h2>
 
 <?php echo validation_errors(); ?>
@@ -15,3 +16,4 @@
 	<input type="submit" name="submit" class="btn" value="Save" /> 
 
 </form>
+</div>
