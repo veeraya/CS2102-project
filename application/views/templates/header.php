@@ -49,18 +49,39 @@ swfobject.embedSWF('<?php echo base_url() ?>/assets/scripts/piecemaker/piecemake
 <body id="top">
 <div class="wrapper col1">
   <div id="topbar" class="clear">
-      <ul class="nav pull-right">
-        <li></li>
-      </ul>
-      <span float="right">
-      <form class="navbar-form pull-right" action="http://pook.in/CS2102-project/index.php/auth/processLogin" method="post" name="processLogin" id="search">
-        <input class="span2" type="text" name="email" id="email" placeholder="Email">
+
+    <?php if (!$this->session->userdata('username')) {
+      $loginUrl = base_url()."index.php/auth/processLogin";
+      $signupUrl = base_url()."index.php/users/create";
+      echo <<<"EOT"
+      <form action="$loginUrl" method="post" name="processLogin" id="search">
+        <input class="span2" type="text" name="email" placeholder="Email">
         <input class="span2" type="password" name="password" placeholder="Password">
         <button type="submit" class="btn" id="login">Log in</button>
-          <a href="localhost/index.php/users/create">Sign up!</a>
+        <a href="$signupUrl">Sign up!</a>
       </form>
-    
-      </span>
+EOT;
+}
+        else {
+          $logoutUrl = base_url()."index.php/auth/logout";
+          $username = $this->session->userdata('username');
+          $profileUrl = base_url()."index.php/users/view/".$username;
+          $searchGif = base_url()."assets/images/search.gif";
+          echo <<<"ABC"
+          <form action="#" method="post" id="search">
+            <fieldset>
+              <legend>Search</legend>
+              <input type="text" value="Search" onfocus="this.value=(this.value=='Search')? '' : this.value ;">
+              <input type="image" id="go" src="$searchGif" alt="Search">
+            </fieldset>
+          </form>
+          <ul>
+          <li><a href="$profileUrl">Dashboard</a>
+          <li><a href="$logoutUrl">Logout</a></li>
+          </ul>
+ABC;
+}
+    ?> 
 
   </div>
 </div>
@@ -68,15 +89,16 @@ swfobject.embedSWF('<?php echo base_url() ?>/assets/scripts/piecemaker/piecemake
 <div class="wrapper col2">
   <div id="header" class="clear">
     <div class="fl_left">
-      <h1><a href="index.html">WTF!</a></h1>
+      <h1><a href="<?php echo base_url() ?>">WTF!</a></h1>
       <p>Where's The Food</p>
     </div>
     <div id="topnav">
       <ul>
-        <li><a href="#">Add Restaurant</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/restaurants/create">Add Restaurant</a></li>
         <li><a href="#">Add a Review</a></li>
-        <li><a href="#">Profile</a></li>
-        <li class="active"><a href="homepage.html">Homepage</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/restaurants">Browse Restaurants</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/users/view">Profile</a></li>
+        <li><a href="<?php echo base_url() ?>">Homepage</a></li>
       </ul>
     </div>
   </div>
