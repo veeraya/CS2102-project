@@ -5,11 +5,11 @@
     <!-- ####################################################################################################### -->
     <!--<div id="piecemaker"> <img src="assets/images/demo/piecemaker/960x360.gif" alt="" /> </div>-->
     <div id="hpage_slider" class="clear" style="width:960px; height:380px;">
-          <div class="item"><img src="assets/images/demo/featured-project/1.gif" alt="" width="940px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/2.gif" alt="" width="940px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/3.gif" alt="" width="940px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/4.gif" alt="" width="940px" height="360px"/></div>
-          <div class="item"><img src="assets/images/demo/featured-project/5.gif" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/1.jpg" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/2.jpg" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/3.jpg" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/4.jpg" alt="" width="940px" height="360px"/></div>
+          <div class="item"><img src="assets/images/demo/featured-project/5.jpg" alt="" width="940px" height="360px"/></div>
         </div>
         </div>
     <!-- ####################################################################################################### -->
@@ -28,15 +28,7 @@
     </div>
     <!-- ####################################################################################################### -->
     <div id="homepage" class="clear">
-      <div class="fl_left">
-        <h2>Latest Featured Food and Restaurant</h2>
-        <div id="hpage_slider">
-          <div class="item"><img src="assets/images/demo/featured-project/1.gif" alt="" /></div>
-          <div class="item"><img src="assets/images/demo/featured-project/2.gif" alt="" /></div>
-          <div class="item"><img src="assets/images/demo/featured-project/3.gif" alt="" /></div>
-          <div class="item"><img src="assets/images/demo/featured-project/4.gif" alt="" /></div>
-          <div class="item"><img src="assets/images/demo/featured-project/5.gif" alt="" /></div>
-        </div>
+      <div class="f1_left">
        
       </div>
       <div class="fl_right">
