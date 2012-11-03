@@ -6,7 +6,9 @@ class RestaurantModel extends CI_Model {
     var $type   = '';
     var $cuisine   = '';
     var $description   = '';
-
+    var $restaurant_name = '';
+    var $restaurant_postal_code = '';
+    
     function __construct()
     {
         // Call the Model constructor
