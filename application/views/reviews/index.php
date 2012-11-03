@@ -8,6 +8,7 @@
 	<b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
 	<b>Service rating:</b> <?php echo $review['service_rating'] ?><br />
 	<b>Recommend:</b> <?php echo $review['recommend'] ?><br />
+	<b>Url:</b> <?php echo $review['url'] ?>
 	<br /><br />
 
 <?php endforeach ?>

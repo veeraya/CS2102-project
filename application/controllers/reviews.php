@@ -15,13 +15,20 @@ class Reviews extends CI_Controller{
 		$this->load->view('templates/footer');
 	}
 
+	public function view($url){
+		$data['review'] = $this->ReviewModel->getReviewByUrl($url);
+		$this->load->view('templates/header');
+		$this->load->view('reviews/view', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function viewByRestaurant($restaurantUrl){
 			$data['restaurant'] = $this->RestaurantModel->getRestaurantByUrl($restaurantUrl);
 			$data['reviews'] = $this->ReviewModel->getReviewsByRestaurant($restaurantUrl);
 			$this->load->view('templates/header');
 			$this->load->view('restaurants/reviews', $data);
 			$this->load->view('templates/footer');
-		}
+	}
 
 	public function create($restaurantUrl){
 		if ($this->session->userdata('username')){
@@ -29,13 +36,13 @@ class Reviews extends CI_Controller{
 			$this->load->view('templates/header');
 			$this->load->view('reviews/create', $data);
 			$this->load->view('templates/footer');
-		}
+	}
 		else {
 			$errorMsg = "You need to log-in to view this page<br />";
 			$this->session->set_flashdata('errorMsg', $errorMsg);
 			redirect('auth/login');
 		}
-		}
+	}
 
 	public function processCreate($restaurantUrl){
 		$restaurant = $this->RestaurantModel->getRestaurantByUrl($restaurantUrl);
@@ -43,7 +50,17 @@ class Reviews extends CI_Controller{
 		redirect('restaurants/'.$restaurant['url'].'/reviews');
 	}
 
+	public function edit($url){
+		$data['review'] = $this->ReviewModel->getReviewByUrl($url);
+		$this->load->view('templates/header');
+		$this->load->view('reviews/edit', $data);
+		$this->load->view('templates/footer');
+	}
 
+	public function processEdit(){
+		$url = $this->ReviewModel->edit();
+		redirect('reviews/view/'.$url);
 
+	}
 }
  ?>

@@ -9,7 +9,6 @@
     Phone: <?php echo $restaurant['phone'] ?><br />
     Timing: <?php echo $restaurant['timing'] ?><br />
     Cuisine: <?php echo $restaurant['cuisine'] ?><br />
-
     
     <a href="restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
     <a href="restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>

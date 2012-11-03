@@ -11,7 +11,6 @@ class Users extends CI_Controller{
 		$data['users'] = $this->UserModel->getAllUsers();
 		$this->load->view('templates/header');
 		$this->load->view('users/index', $data);
-
 	}
 
 	public function view($username){
@@ -30,7 +29,7 @@ class Users extends CI_Controller{
 			redirect('auth/login');
 		}
 	}
-
+	
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -43,13 +42,11 @@ class Users extends CI_Controller{
 			$this->load->view('templates/header');
 			$this->load->view('users/create');
 			$this->load->view('templates/footer');
-
 		}
 		else{
 			$user = $this->UserModel->create();
 			$this->session->set_userdata($user);
 			redirect('users/view/'.$user[username]);
-			
 		}
 	}
 
