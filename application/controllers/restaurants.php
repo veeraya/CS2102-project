@@ -7,7 +7,6 @@ class Restaurants extends CI_Controller{
 	}
 
 	public function index(){
-
 		$data['restaurants'] = $this->RestaurantModel->getAllRestaurants();
 		$this->load->view('templates/header');
 		$this->load->view('restaurants/index', $data);

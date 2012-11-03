@@ -8,7 +8,6 @@ class Users extends CI_Controller{
 	}
 
 	public function index(){
-
 		$data['users'] = $this->UserModel->getAllUsers();
 		$this->load->view('templates/header');
 		$this->load->view('users/index', $data);
@@ -18,6 +17,8 @@ class Users extends CI_Controller{
 	public function view($username){
 		if ($this->session->userdata('username')){
 		$data['user'] = $this->UserModel->getUserByUsername($username);
+		$this->load->model('ReviewModel');
+		$data['reviews'] = $this->ReviewModel->getReviewsByUser($data['user']['email']);
 		$this->load->view('templates/header');
 		$this->load->view('users/view', $data);
 		$this->load->view('templates/footer');

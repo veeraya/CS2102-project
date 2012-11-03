@@ -8,5 +8,14 @@ Email: <?php echo $user['email'] ?> <br /> <br />
 	echo "<a href=\"$editUrl\">Edit profile</a>";
 	}
 ?>
+<h2>My Reviews</h2>
+<?php foreach ($reviews as $review): ?>
+Title: <?php echo $review['title'] ?> <br />
+Content: <?php echo $review['content'] ?> <br />
+Food rating: <?php echo $review['food_rating'] ?> <br />
+Service rating: <?php echo $review['service_rating'] ?> <br />
+Recommend: <?php echo $review['recommend'] ?> <br /><br />
+<?php endforeach ?>
+To do: Display this user's reviews
 </p>
 </div>

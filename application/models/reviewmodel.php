@@ -38,7 +38,7 @@ class ReviewModel extends CI_Model{
 
 	public function getReviewsByUser($userEmail){
 		$queryString = "SELECT * from reviews WHERE user_email = ?";
-		$this->db->query($queryString, $userEmail);
+		$query = $this->db->query($queryString, array($userEmail));
 		return $query->result_array();
 	}
 }
