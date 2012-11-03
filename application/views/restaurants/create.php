@@ -12,7 +12,7 @@
 	 <label for="address">Address</label>
 	 <input type="text" name="address" id="address" /><br />
 
-	 <label for="cuisine">Location</label>
+	 <label for="location">Location</label>
 	 <select name="location" id="location" name="location"> 
 	   <option value="Aljunied" >Aljunied</option>
 	   <option value="Ang Mo Kio" >Ang Mo Kio</option>
