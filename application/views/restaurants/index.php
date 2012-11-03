@@ -1,4 +1,8 @@
 <div class="container_12">
+<!-- 	<?php echo "<pre>";
+	echo var_dump($restaurants);
+	echo "</pre>";
+	?> -->
 <a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
 <?php foreach ($restaurants as $restaurant): ?>
 
@@ -12,8 +16,8 @@
     Food rating: <?php echo $restaurant['food_rating'] ?><br />
     Service Rating: <?php echo $restaurant['service_rating'] ?><br />
     % recommended: <?php echo ($restaurant['recommend_percent']*100); ?><br />
-    <a href="restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
-    <a href="restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
+    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
+    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
 
 <?php endforeach ?>
 </div>

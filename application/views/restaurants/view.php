@@ -1,5 +1,8 @@
 <div class="container_12">
-    
+    <?php echo "<pre>";
+	echo var_dump($restaurant);
+	echo "</pre>";
+	?> 
 <h2>
 	<?php echo $restaurant['name'] ?>
 </h2>

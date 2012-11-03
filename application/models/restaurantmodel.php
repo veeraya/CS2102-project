@@ -21,15 +21,49 @@ class RestaurantModel extends CI_Model {
 	}
 
 	public function getRestaurantByUrl($url){
-		$queryString = "SELECT * FROM restaurantsview WHERE url = '".$url."'";
+		$queryString = "SELECT * FROM restaurants WHERE url = '".$url."'";
 		$query = $this->db->query($queryString, array($url));
-		return $query->row_array();
+		$restaurant = $query->row_array();
+		$ratingQueryString = "SELECT r.avg_food_rating, r.avg_service_rating, r.recommend_percent FROM ratings r WHERE restaurant_name = ? AND restaurant_postal_code = ?";
+		$ratingQuery  = $this->db->query($ratingQueryString, array($restaurant['name'],$restaurant['postal_code']));
+		
+		if ($ratingQuery->num_rows() > 0){
+			$rating = $ratingQuery->row_array();
+			$restaurant['food_rating'] = $rating['avg_food_rating'];
+			$restaurant['service_rating'] = $rating['avg_service_rating'];
+			$restaurant['recommend_percent'] = $rating['recommend_percent'];
+		}
+		else {
+			$restaurant['food_rating'] = "N/A";
+			$restaurant['service_rating'] = "N/A";
+			$restaurant['recommend_percent'] =  "N/A";
+		}
+		return $restaurant;
 	}
 
 	public function getAllRestaurants(){
-		$queryString = "SELECT * FROM restaurantsview";
+		$queryString = "SELECT * FROM restaurants";
 		$query = $this->db->query($queryString);
-		return $query->result_array();	
+		$restaurants = $query->result_array();
+		$results = array();
+		foreach ($restaurants as $restaurant){
+			$ratingQueryString = "SELECT r.avg_food_rating, r.avg_service_rating, r.recommend_percent FROM ratings r WHERE restaurant_name = ? AND restaurant_postal_code = ?";
+			$ratingQuery  = $this->db->query($ratingQueryString, array($restaurant['name'],$restaurant['postal_code']));
+			
+			if ($ratingQuery->num_rows() > 0){
+				$rating = $ratingQuery->row_array();
+				$restaurant['food_rating'] = $rating['avg_food_rating'];
+				$restaurant['service_rating'] = $rating['avg_service_rating'];
+				$restaurant['recommend_percent'] = $rating['recommend_percent'];
+			}
+			else {
+				$restaurant['food_rating'] = "N/A";
+				$restaurant['service_rating'] = "N/A";
+				$restaurant['recommend_percent'] =  "N/A";
+			}
+			array_push($results, $restaurant);
+		}
+		return $results;
 	}
 
 	public function bestFoodRating(){
