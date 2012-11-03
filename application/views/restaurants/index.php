@@ -5,6 +5,7 @@
     <h3><?php echo $restaurant['name'] ?></h3>
     Postal code: <?php echo $restaurant['postal_code'] ?><br />
     Address: <?php echo $restaurant['address'] ?><br />
+    Location: <?php echo $restaurant['location'] ?><br />
     Phone: <?php echo $restaurant['phone'] ?><br />
     Timing: <?php echo $restaurant['timing'] ?><br />
     Cuisine: <?php echo $restaurant['cuisine'] ?><br />
