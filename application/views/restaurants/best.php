@@ -9,9 +9,7 @@
         <tr>
             <td>
                 <h3>
-                    <a href="<?php echo base_url() ?>
-                        index.php/restaurants/
-                        <?php echo $bestFoodRestaurant['url']; ?>
+                    <a href="<?php echo base_url() ?>index.php/restaurants/<?php echo $bestFoodRestaurant['url']; ?>
                         ">
                         <?php echo $bestFoodRestaurant['name'] ?></a>
                 </h3>
@@ -32,10 +30,7 @@
         <tr>
             <td>
                 <h3>
-                    <a href="<?php echo base_url() ?>
-                        index.php/restaurants/
-                        <?php echo $bestServiceRestaurant['url']; ?>
-                        ">
+                    <a href="<?php echo base_url() ?>index.php/restaurants/<?php echo $bestServiceRestaurant['url']; ?>">
                         <?php echo $bestServiceRestaurant['name'] ?></a>
                 </h3>
             </td>
@@ -55,10 +50,7 @@
         <tr>
             <td>
                 <h3>
-                    <a href="<?php echo base_url() ?>
-                        index.php/restaurants/
-                        <?php echo $bestRecommendRestaurant['url']; ?>
-                        ">
+                    <a href="<?php echo base_url() ?>index.php/restaurants/<?php echo $bestRecommendRestaurant['url']; ?>">
                         <?php echo $bestRecommendRestaurant['name'] ?></a>
                 </h3>
             </td>
