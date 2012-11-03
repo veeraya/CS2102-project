@@ -38,16 +38,17 @@
       </div>
       <div class="fl_right">
         <h2>Search</h2>
-        <form action="#" method="post" id="search_body">
+        <form action="<?php echo base_url(); ?>index.php/search/search" method="post" id="search_body">
           <fieldset>
           <label>Name of Restaurant/ Dish:</label>
-            <input type="text" id="Name" value="Name of Restaurant/ Dish&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
+            <input type="text" id="Name" name="Name" value="Name of Restaurant/ Dish&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
             
             </br>
              </br> </br> 
-             <label>Cuisine:</label></br>
+             <label>Cuisine:</label><br/>
            
   <select name="cuisine" id="cuisine" name="cuisine" style="display:block; 	float:left;	width:283px; height:33px; margin:0; padding:1px 1px; color:#989898; background:url("assets/images/newsletter_form.gif") 0 0 no-repeat #FAFAFA; border:none;"> 
+    <option value="" ></option>
     <option value="Asian" >Asian</option>
     <option value="Chinese" >Chinese</option>
     <option value="Italian" >Italian</option>
@@ -61,9 +62,10 @@
   </select>
             </br>
              </br> 
-             <label>Location:</label></br>
+             <label>Location:</label><br/>
              
    <select name="location" id="location" name="location" style="display:block; 	float:left;	width:283px; height:33px; margin:0; padding:1px 1px; color:#989898; background:url("assets/images/newsletter_form.gif") 0 0 no-repeat #FAFAFA; border:none;"> 
+     <option value="" ></option>
      <option value="Aljunied" >Aljunied</option>
      <option value="Ang Mo Kio" >Ang Mo Kio</option>
      <option value="Balestier Road" >Balestier Road</option>
@@ -80,7 +82,7 @@
      <option value="West Coast" >West Coast</option>
    </select><br/>
             
-            </br>
+            <br/>
             
            
 

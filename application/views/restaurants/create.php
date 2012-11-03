@@ -40,7 +40,6 @@
 	<input type="text" name="timing" id="timing" /><br />
 
 	<label for="cuisine">Cuisine</label>
-	<label for="cuisine">Cuisine</label>
 	<select name="cuisine" id="cuisine" name="cuisine"> 
 	  <option value="Asian" >Asian</option>
 	  <option value="Chinese" >Chinese</option>

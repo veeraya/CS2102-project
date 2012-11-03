@@ -58,7 +58,7 @@ swfobject.embedSWF('<?php echo base_url() ?>assets/scripts/piecemaker/piecemaker
 
     <?php if (!$this->session->userdata('username')) {
       $loginUrl = base_url()."index.php/auth/processLogin";
-      $signupUrl = base_url()."index.php/users/create";
+      $signupUrl = base_url()."index.php/auth/login";
       echo <<<"EOT"
       <form action="$loginUrl" method="post" name="processLogin" id="search">
         <input class="span2" type="text" name="email" placeholder="Email">
