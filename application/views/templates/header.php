@@ -101,7 +101,7 @@ ABC;
     <div id="topnav">
       <ul>
         <li><a href="<?php echo base_url() ?>index.php/restaurants/create">Add Restaurant</a></li>
-        <li><a href="#">Add a Review</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/restaurants/best">Best Restaurants</a></li>
         <li><a href="<?php echo base_url() ?>index.php/restaurants">Browse Restaurants</a></li>
         <li><a href="<?php echo base_url() ?>">Homepage</a></li>
       </ul>

@@ -31,12 +31,20 @@ class Restaurants extends CI_Controller{
 			$this->session->set_flashdata('errorMsg', $errorMsg);
 			redirect('auth/login');
 		}
-
 	}
 
 	public function createRestaurant(){
 		$url = $this->RestaurantModel->create();
 		redirect('restaurants/'.$url);
+	}
+
+	public function best(){
+		$data['bestFoodRating'] = $this->RestaurantModel->bestFoodRating();
+		$data['bestServiceRating'] = $this->RestaurantModel->bestServiceRating();
+		$data['bestRecommend'] = $this->RestaurantModel->bestRecommend();
+		$this->load->view('templates/header');
+		$this->load->view('restaurants/best', $data);
+		$this->load->view('templates/footer');
 	}
 }
  ?>

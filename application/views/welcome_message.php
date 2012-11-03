@@ -40,8 +40,8 @@
         <h2>Search</h2>
         <form action="<?php echo base_url(); ?>index.php/search/search" method="post" id="search_body">
           <fieldset>
-          <label>Name of Restaurant/ Dish:</label>
-            <input type="text" id="Name" name="Name" value="Name of Restaurant/ Dish&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
+          <label>Name of Restaurant:</label>
+            <input type="text" id="Name" name="Name" value="Name of Restaurant&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
             
             </br>
              </br> </br> 

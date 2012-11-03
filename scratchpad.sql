@@ -103,3 +103,28 @@ SELECT CONCAT( user_email,  '_', restaurant_name,  '_', restaurant_postal_code, 
 FROM  `reviews` 
 
 update reviews set url = CONCAT( user_email,  '_', restaurant_name,  '_', restaurant_postal_code,  '_', updated_on ) 
+
+// edited view code with recommend percent
+CREATE VIEW Ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
+SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
+FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
+
+// mega restaurant view!
+CREATE VIEW restaurantsview(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
+SELECT r.restaurant_name, r.restaurant_postal_code, res.url, res.address, res.location, res.phone, res.website, res.timing, res.cuisine, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
+FROM reviews r, restaurants res WHERE res.name = r.restaurant_name AND res.postal_code = r.restaurant_postal_code 
+GROUP BY r.restaurant_name, r.restaurant_postal_code;
+
+
+// rating!!
+SELECT r.restaurant_name, r.avg_food_rating
+FROM ratings r ORDER BY r.avg_food_rating DESC 
+LIMIT 5
+
+SELECT r.restaurant_name, r.avg_service_rating
+FROM ratings r ORDER BY r.avg_service_rating DESC 
+LIMIT 5
+
+SELECT r.restaurant_name, r.recommend_percent
+FROM ratings r ORDER BY r.recommend_percent DESC 
+LIMIT 5

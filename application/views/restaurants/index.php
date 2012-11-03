@@ -9,7 +9,9 @@
     Phone: <?php echo $restaurant['phone'] ?><br />
     Timing: <?php echo $restaurant['timing'] ?><br />
     Cuisine: <?php echo $restaurant['cuisine'] ?><br />
-    
+    Food rating: <?php echo $restaurant['food_rating'] ?><br />
+    Service Rating: <?php echo $restaurant['service_rating'] ?><br />
+    % recommended: <?php echo ($restaurant['recommend_percent']*100); ?><br />
     <a href="restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
     <a href="restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
 
