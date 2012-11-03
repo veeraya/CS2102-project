@@ -28,7 +28,12 @@
     </div>
     <!-- ####################################################################################################### -->
     <div id="homepage" class="clear">
-      <div class="f1_left">
+      <div class="fl_left">
+        <h2>Latest Featured Food and Restaurant</h2>
+        <div id="hpage_slider">
+          <div class="item"><img src="assets/images/demo/featured-project/6.jpg" alt="" width="480px" height="320px"/></div>
+          
+        </div>
        
       </div>
       <div class="fl_right">
@@ -41,15 +46,44 @@
             </br>
              </br> </br> 
              <label>Cuisine:</label></br>
-            <input type="text" id="Cuisine" value="e.g. Chinese, French, Malay&hellip;" onfocus="this.value=(this.value=='e.g. Chinese, French, Malay&hellip;')? '' : this.value ;" />
+           
+  <select name="cuisine" id="cuisine" name="cuisine" style="display:block; 	float:left;	width:283px; height:33px; margin:0; padding:1px 1px; color:#989898; background:url("assets/images/newsletter_form.gif") 0 0 no-repeat #FAFAFA; border:none;"> 
+    <option value="Asian" >Asian</option>
+    <option value="Chinese" >Chinese</option>
+    <option value="Italian" >Italian</option>
+    <option value="Thai" >Thai</option>
+    <option value="Indian" >Indian</option>
+    <option value="Malay" >Malay</option>
+    <option value="Western" >Western</option>
+    <option value="Japanese" >Japanese</option>
+    <option value="Snack" >Snack</option>
+    <option value="Dessert" >Dessert</option>
+  </select>
             </br>
              </br> 
              <label>Location:</label></br>
-            <input type="text" id="Location" value="e.g. Pasir Ris, Bugis&hellip;" onfocus="this.value=(this.value=='e.g. Pasir Ris, Bugis&hellip;')? '' : this.value ;" />
+             
+   <select name="location" id="location" name="location" style="display:block; 	float:left;	width:283px; height:33px; margin:0; padding:1px 1px; color:#989898; background:url("assets/images/newsletter_form.gif") 0 0 no-repeat #FAFAFA; border:none;"> 
+     <option value="Aljunied" >Aljunied</option>
+     <option value="Ang Mo Kio" >Ang Mo Kio</option>
+     <option value="Balestier Road" >Balestier Road</option>
+     <option value="Bedok" >Bedok</option>
+     <option value="Bishan" >Bishan</option>
+     <option value="Bugis" >Bugis</option>
+     <option value="Chinatown" >Chinatown</option>
+     <option value="Geylang" >Geylang</option>
+     <option value="Jurong East" >Jurong East</option>
+     <option value="Kallang" >Kallang</option>
+     <option value="Tampines" >Tampines</option>
+     <option value="Toa Payoh" >Toa Payoh</option>
+     <option value="Tiong Bahru" >Tiong Bahru</option>
+     <option value="West Coast" >West Coast</option>
+   </select><br/>
+            
             </br>
-             </br> 
-             <label>Category:</label></br>
-            <input type="text" id="Category" value="e.g. Dessert, Main Course&hellip;" onfocus="this.value=(this.value=='e.g. Dessert, Main Course&hellip;')? '' : this.value ;" />
+            
+           
+
             <input type="Submit" id="subscribe" src="images/sign-up.gif" value="Search" alt="Submit" />
           </fieldset>
         </form>

@@ -8,6 +8,9 @@
 <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/styles/reset.css" type="text/css" /> -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/styles/grid.css" type="text/css" />
 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="assets/script.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/scripts/jquery-1.4.1.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/scripts/jquery.defaultvalue.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/scripts/jquery-ui-1.8.13.custom.min.js"></script>

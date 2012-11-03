@@ -27,13 +27,13 @@ $(document).ready(function () {
 });
 </script>
 <!-- Homepage Only Scripts -->
-<script type="text/javascript" src="scripts/jquery.cycle.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.cycle.setup.js"></script>
-<script type="text/javascript" src="scripts/piecemaker/swfobject/swfobject.js"></script>
+<script type="text/javascript" src="assets/scripts/jquery.cycle.min.js"></script>
+<script type="text/javascript" src="assets/scripts/jquery.cycle.setup.js"></script>
+<script type="text/javascript" src="assets/scripts/piecemaker/swfobject/swfobject.js"></script>
 <script type="text/javascript">
 var flashvars = {};
-flashvars.cssSource = "scripts/piecemaker/piecemaker.css";
-flashvars.xmlSource = "scripts/piecemaker/piecemaker.xml";
+flashvars.cssSource = "assets/scripts/piecemaker/piecemaker.css";
+flashvars.xmlSource = "assets/scripts/piecemaker/piecemaker.xml";
 var params = {};
 params.play = "false";
 params.menu = "false";
@@ -42,7 +42,7 @@ params.wmode = "transparent";
 params.allowfullscreen = "true";
 params.allowscriptaccess = "sameDomain";
 params.allownetworking = "all";
-swfobject.embedSWF('scripts/piecemaker/piecemaker.swf', 'piecemaker', '960', '430', '10', null, flashvars, params, null);
+swfobject.embedSWF('assets/scripts/piecemaker/piecemaker.swf', 'piecemaker', '960', '430', '10', null, flashvars, params, null);
 </script>
 <!-- End Homepage Only Scripts -->
 </head>
