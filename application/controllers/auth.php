@@ -8,9 +8,26 @@ class Auth extends CI_Controller{
 
 	public function login(){
 		$data['errorMsg'] = $this->session->flashdata('errorMsg');
-		$this->load->view('templates/header');
-		$this->load->view('auth/login', $data);
-		$this->load->view('templates/footer');
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('username', 'username', 'required');
+		$this->form_validation->set_rules('email', 'email', 'required');
+		$this->form_validation->set_rules('password', 'password', 'required');
+		
+		if ($this->form_validation->run() === FALSE){
+			$this->load->view('templates/header');
+			$this->load->view('auth/login', $data);
+			$this->load->view('templates/footer');
+		}
+		else{
+			$user = $this->UserModel->create();
+			$this->session->set_userdata($user);
+			redirect('users/view/'.$user[username]);
+		}
+
+		
 	}
 
 	public function processLogin(){
