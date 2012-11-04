@@ -73,10 +73,6 @@ load->database();
 		$this->load->view('templates/header');
 		$this->load->view('restaurants/index', $data);
 		$this->load->view('templates/footer');
-
-		$this->load->view('templates/header');
-		$this->load->view('restaurants/index', $data);
-		$this->load->view('templates/footer');
 	}
 
 	public function freeTextSearch(){
