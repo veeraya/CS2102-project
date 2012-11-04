@@ -73,11 +73,12 @@ EOT;
           $username = $this->session->userdata('username');
           $profileUrl = base_url()."index.php/users/view/".$username;
           $searchGif = base_url()."assets/images/search.gif";
+          $searchUrl = base_url()."index.php/search/freeTextSearch";
           echo <<<"ABC"
-          <form action="#" method="post" id="search">
+          <form action="$searchUrl" method="post" id="search" >
             <fieldset>
               <legend>Search</legend>
-              <input type="text" value="Search" onfocus="this.value=(this.value=='Search')? '' : this.value ;">
+              <input type="text" name="freeTextSearch" value="Search" onfocus="this.value=(this.value=='Search')? '' : this.value ;">
               <input type="image" id="go" src="$searchGif" alt="Search">
             </fieldset>
           </form>

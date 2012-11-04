@@ -1,6 +1,6 @@
 <div class="container_12">
-<!-- 	<?php echo "<pre>";
-	echo var_dump($restaurants);
+<!--  	<?php echo "<pre>";
+	echo var_dump($query);
 	echo "</pre>";
 	?> -->
 <a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
