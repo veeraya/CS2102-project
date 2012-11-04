@@ -42,7 +42,7 @@
               <b>Food rating:</b> <?php echo $restaurant['food_rating'] ?><br />
               <b>Service Rating:</b> <?php echo $restaurant['service_rating'] ?><br />
               <b>% recommended:</b> <?php echo ($restaurant['recommend_percent']*100); ?><br />
-            </div><br/>
+            </div>
           <?php endforeach ?>
         </div><br/><br/>
 
@@ -50,10 +50,11 @@
      <?php foreach ($latestReviews as $review): ?>
           <div class="item1">
               <h3><a href="<?php echo base_url(); ?>index.php/reviews/view/<?php echo $review['url'] ?>"><?php echo $review['title'] ?></a></h3>
+              <b><i><?php echo $review['restaurant_name'] ?></i></b> <br />
               <?php echo substr($review['content'], 0, 138)."..."; ?><br />
               <b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
               <b>Service Rating:</b> <?php echo $review['service_rating'] ?><br />
-              <b>% recommended:</b> <?php echo ($review['recommend']); ?><br /><br />
+              <b>Recommend:</b> <?php if ($review['recommend'] == 1) echo "Yes"; else echo "No"; ?><br /><br />
             </div>
           <?php endforeach ?>      
        
