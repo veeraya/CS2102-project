@@ -6,4 +6,21 @@ $(function () {
         pause: 0, // true to enable "pause on hover"
         pauseOnPagerHover: 0 // true to pause when hovering over pager link
     });
+
+    $('#hpage_slider1').after('<div id="fsn1"><ul id="fs_pagination1">').cycle({
+        timeout: 5000, // milliseconds between slide transitions (0 to disable auto advance)
+        fx: 'fade', // choose a transition type, ex: fade, scrollUp, shuffle, etc...            
+        pager: '#fs_pagination1', // selector for element to use as pager container
+        pause: 0, // true to enable "pause on hover"
+        pauseOnPagerHover: 0 // true to pause when hovering over pager link
+    });
+
+    // $('#hpage_slider2').after('<div id="fsn2"><ul id="fs_pagination2">').cycle({
+    //     timeout: 5000, // milliseconds between slide transitions (0 to disable auto advance)
+    //     fx: 'fade', // choose a transition type, ex: fade, scrollUp, shuffle, etc...            
+    //     pager: '#fs_pagination2', // selector for element to use as pager container
+    //     pause: 0, // true to enable "pause on hover"
+    //     pauseOnPagerHover: 0 // true to pause when hovering over pager link
+    // });
+
 });

@@ -1,4 +1,7 @@
-
+ <!--<?php echo "<pre>";
+  echo var_dump($randomRestaurants);
+  echo "</pre>";
+  ?> -->
 <div class="wrapper col3">
   <div id="featured_slide">
   <div id="homepage">
@@ -24,16 +27,35 @@
         <h2>Hungry is it?</h2>
         <p>Why not try our services today, you won't regret your choice !</p>
       </div>
-      <p class="fl_right"><a href="#contact">Sign Up Now!</a></p>
+      <p class="fl_right"><a href="<?php echo base_url(); ?>index.php/auth/login">Sign Up Now!</a></p>
     </div>
     <!-- ####################################################################################################### -->
     <div id="homepage" class="clear">
       <div class="fl_left">
-        <h2>Latest Featured Food and Restaurant</h2>
-        <div id="hpage_slider">
-          <div class="item"><img src="assets/images/demo/featured-project/6.jpg" alt="" width="480px" height="320px"/></div>
-          
-        </div>
+        <h2>Featured Food and Restaurant</h2>
+        <div id="hpage_slider1">
+<!--           <div class="item"><img src="assets/images/demo/featured-project/6.jpg" alt="" width="480px" height="320px"/></div>
+ -->          <?php foreach ($randomRestaurants as $restaurant): ?>
+          <div class="item">
+              <h3><a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>"><?php echo $restaurant['name'] ?></a></h3>
+              <b>Cuisine:</b> <?php echo $restaurant['cuisine'] ?><br />
+              <b>Food rating:</b> <?php echo $restaurant['food_rating'] ?><br />
+              <b>Service Rating:</b> <?php echo $restaurant['service_rating'] ?><br />
+              <b>% recommended:</b> <?php echo ($restaurant['recommend_percent']*100); ?><br />
+            </div><br/>
+          <?php endforeach ?>
+        </div><br/><br/>
+
+        <h2>Latest Reviews</h2>
+     <?php foreach ($latestReviews as $review): ?>
+          <div class="item1">
+              <h3><a href="<?php echo base_url(); ?>index.php/reviews/view/<?php echo $review['url'] ?>"><?php echo $review['title'] ?></a></h3>
+              <?php echo substr($review['content'], 0, 138)."..."; ?><br />
+              <b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
+              <b>Service Rating:</b> <?php echo $review['service_rating'] ?><br />
+              <b>% recommended:</b> <?php echo ($review['recommend']); ?><br /><br />
+            </div>
+          <?php endforeach ?>      
        
       </div>
       <div class="fl_right">

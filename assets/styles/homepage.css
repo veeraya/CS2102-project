@@ -124,6 +124,41 @@ HTML Output:
 	background:url("../images/slide.png") 0% 50% no-repeat;
 	}
 
+
+#homepage #fsn1 ul{
+	display:block;
+	position:relative;
+	width:100px;
+	height:10px;
+	margin:0 auto;
+	padding:0;
+	overflow:hidden;
+	list-style:none;
+	}
+
+#homepage #fsn1 ul li, #homepage #fsn1 ul li a{
+	display:block;
+	float:left;
+	width:10px;
+	height:10px;
+	margin:0 10px 0 0;
+	padding:0;
+	}
+
+#homepage #fsn1 ul li a{
+	float:none;
+	border:none;
+	margin:0;
+	outline:none;
+	text-indent:-5000px;
+	text-decoration:none;
+	background:url("../images/slide.png") 50% 50% no-repeat;
+	}
+
+#homepage #fsn1 .activeSlide{
+	background:url("../images/slide.png") 0% 50% no-repeat;
+	}
+
 /* ----------------------------------------------Right Column-------------------------------------*/
 
 #homepage .fl_right{

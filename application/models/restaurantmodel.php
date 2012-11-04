@@ -66,6 +66,32 @@ class RestaurantModel extends CI_Model {
 		return $results;
 	}
 
+	public function getRandomRestaurants($noOfRestaurants){
+		$queryString = "SELECT * FROM restaurants ORDER BY RAND( ) LIMIT ".$noOfRestaurants;
+		$query = $this->db->query($queryString);
+		$restaurants = $query->result_array();
+		$results = array();
+		foreach ($restaurants as $restaurant){
+			$ratingQueryString = "SELECT r.avg_food_rating, r.avg_service_rating, r.recommend_percent FROM ratings r WHERE restaurant_name = ? AND restaurant_postal_code = ?";
+			$ratingQuery  = $this->db->query($ratingQueryString, array($restaurant['name'],$restaurant['postal_code']));
+			
+			if ($ratingQuery->num_rows() > 0){
+				$rating = $ratingQuery->row_array();
+				$restaurant['food_rating'] = $rating['avg_food_rating'];
+				$restaurant['service_rating'] = $rating['avg_service_rating'];
+				$restaurant['recommend_percent'] = $rating['recommend_percent'];
+			}
+			else {
+				$restaurant['food_rating'] = "N/A";
+				$restaurant['service_rating'] = "N/A";
+				$restaurant['recommend_percent'] =  "N/A";
+			}
+			array_push($results, $restaurant);
+		}
+		return $results;
+
+	}
+
 	public function bestFoodRating(){
 		$queryString = "SELECT r.name, r.food_rating, r.url ".
 		"FROM restaurantsview r ORDER BY r.food_rating DESC LIMIT 5";

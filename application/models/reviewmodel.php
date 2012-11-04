@@ -67,5 +67,11 @@ class ReviewModel extends CI_Model{
 		$query = $this->db->query($queryString, array($userEmail));
 		return $query->result_array();
 	}
+
+	public function getLatestReviews(){
+		$queryString = "SELECT * FROM reviews ORDER BY updated_on DESC LIMIT 3";
+		$query = $this->db->query($queryString);
+		return $query->result_array();
+	}
 }
  ?>
