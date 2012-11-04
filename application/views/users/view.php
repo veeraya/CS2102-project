@@ -19,7 +19,9 @@ Recommend: <?php echo $review['recommend'] ?> <br />
 <?php 
 	$editUrl = base_url()."index.php/reviews/edit/".$review['url'];
 	echo "<a href=\"$editUrl\">Edit review</a>";
-?><br /><br/>
+?><br />
+<a href="#">Delete review</a>
+<br /><br/>
 <?php endforeach ?>
 To do: Display this user's reviews
 </p>

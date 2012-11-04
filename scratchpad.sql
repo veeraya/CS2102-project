@@ -99,11 +99,6 @@ restaurant_name =  'Ochre (Orchard Central)'
 AND restaurant_postal_code =  '281946'
 )
 
-SELECT CONCAT( user_email,  '_', restaurant_name,  '_', restaurant_postal_code,  '_', updated_on ) 
-FROM  `reviews` 
-
-update reviews set url = CONCAT( user_email,  '_', restaurant_name,  '_', restaurant_postal_code,  '_', updated_on ) 
-
 // edited view code with recommend percent
 CREATE VIEW Ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
 SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
@@ -128,3 +123,14 @@ LIMIT 5
 SELECT r.restaurant_name, r.recommend_percent
 FROM ratings r ORDER BY r.recommend_percent DESC 
 LIMIT 5
+
+// mega restaurant view!!!
+CREATE VIEW restaurantsview(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
+SELECT r1.restaurant_name, r1.restaurant_postal_code, res1.url, res1.address, res1.location, res1.phone, res1.website, res1.timing, res1.cuisine, AVG(r1.food_rating), AVG(r1.service_rating), SUM(r1.recommend=1) / COUNT(r1.recommend) 
+FROM reviews r1, restaurants res1 WHERE res1.name = r1.restaurant_name AND res1.postal_code = r1.restaurant_postal_code 
+GROUP BY r1.restaurant_name, r1.restaurant_postal_code
+UNION 
+SELECT res2.name, res2.postal_code, res2.url, res2.address, res2.location, res2.phone, res2.website, res2.timing, res2.cuisine, NULL, NULL , NULL
+FROM restaurants res2 WHERE NOT EXISTS (SELECT * FROM reviews r2
+WHERE res2.name = r2.restaurant_name AND res2.postal_code = r2.restaurant_postal_code)
+
