@@ -92,6 +92,18 @@ FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`) REFERENCES restaurants
 FOREIGN KEY (`user_email`) REFERENCES `cs2102`.`users` (`email`) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE = INNODB
 
+CREATE TABLE menu (
+`name` VARCHAR( 32 ) ,
+`price` INT ,
+`type` VARCHAR( 32 )  ,
+`cuisine` VARCHAR( 32 )  ,
+`description` VARCHAR( 128 ),
+`restaurant_name` VARCHAR( 128 ),
+`restaurant_postal_code` INT( 16 ),
+PRIMARY KEY (  `name` ,  `restaurant_name`, `restaurant_postal_code` ),
+FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`) REFERENCES restaurants(`name`, `postal_code`)  ON UPDATE CASCADE ON DELETE CASCADE
+)
+
 SELECT AVG( food_rating ) 
 FROM reviews
 WHERE (

@@ -7,7 +7,7 @@
 	<b>Content:</b> <?php echo $review['content'] ?><br />
 	<b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
 	<b>Service rating:</b> <?php echo $review['service_rating'] ?><br />
-	<b>Recommend:</b> <?php echo $review['recommend'] ?><br />
+	<b>Recommend:</b>  <?php if ($review['recommend'] == 1) echo "Yes"; else echo "No"; ?><br />
 	<b>Url:</b> <?php echo $review['url'] ?>
 	<br /><br />
 
