@@ -32,7 +32,7 @@
     <!-- ####################################################################################################### -->
     <div id="homepage" class="clear">
       <div class="fl_left">
-        <h2>Featured Food and Restaurant</h2>
+        <h2>Randomly Featured Restaurant</h2>
         <div id="hpage_slider1">
 <!--           <div class="item"><img src="assets/images/demo/featured-project/6.jpg" alt="" width="480px" height="320px"/></div>
  -->          <?php foreach ($randomRestaurants as $restaurant): ?>
@@ -64,10 +64,12 @@
         <form action="<?php echo base_url(); ?>index.php/search/search" method="post" id="search_body">
           <fieldset>
           <label>Name of Restaurant:</label>
-            <input type="text" id="Name" name="Name" value="Name of Restaurant&hellip;" onfocus="this.value=(this.value=='Name of Restaurant/ Dish&hellip;' || this.value=='')? '' : this.value ;" />
-            
-            </br>
-             </br> </br> 
+            <input type="text" id="Name" name="Name"  /></br></br></br>
+            <label>Timing:</label></br>
+              <input type="text"  class="textInput" id="timing" name="timing"/></br></br>
+            <label>Phone number</label></br>
+              <input type="text" class="textInput" placeholder="Don't put +65 here!"  id="phoneNumber" name="phoneNumber" /></br></br>
+              
              <label>Cuisine:</label><br/>
            
   <select name="cuisine" id="cuisine" name="cuisine" style="display:block; 	float:left;	width:283px; height:33px; margin:0; padding:1px 1px; color:#989898; background:url("assets/images/newsletter_form.gif") 0 0 no-repeat #FAFAFA; border:none;"> 

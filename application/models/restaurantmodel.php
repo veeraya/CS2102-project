@@ -60,21 +60,21 @@ class RestaurantModel extends CI_Model {
 
 	public function bestFoodRating(){
 		$queryString = "SELECT r.name, r.food_rating, r.url ".
-		"FROM ratings r ORDER BY r.food_rating DESC LIMIT 5";
+		"FROM restaurantsview r ORDER BY r.food_rating DESC LIMIT 5";
 		$query = $this->db->query($queryString);
 		return $query->result_array();
 	}
 
 	public function bestServiceRating(){
 		$queryString = "SELECT r.name, r.service_rating, r.url ".
-		"FROM ratings r ORDER BY r.service_rating DESC LIMIT 5";
+		"FROM restaurantsview r ORDER BY r.service_rating DESC LIMIT 5";
 		$query = $this->db->query($queryString);
 		return $query->result_array();
 	}
 
 	public function bestRecommend(){
 		$queryString = "SELECT r.name, r.recommend_percent, r.url ".
-		"FROM ratings r ORDER BY r.recommend_percent DESC LIMIT 5";
+		"FROM restaurantsview r ORDER BY r.recommend_percent DESC LIMIT 5";
 		$query = $this->db->query($queryString);
 		return $query->result_array();
 	}

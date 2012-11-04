@@ -6,6 +6,18 @@ Author URI: http://www.os-templates.com/
 Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
 */
 
+.textInput{
+display:block;
+float:left;
+width:263px;
+height:23px;
+margin:0;
+padding:5px 10px;
+color:#989898;
+background:url("../images/newsletter_form.gif") 0 0 no-repeat #FAFAFA;
+border:none;
+}
+
 form, fieldset, legend{
 	margin:0;
 	padding:0;
