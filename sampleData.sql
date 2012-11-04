@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2012 at 12:27 AM
+-- Generation Time: Nov 04, 2012 at 06:20 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -18,6 +18,30 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `cs2102`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `content` varchar(1028) COLLATE utf8_unicode_ci NOT NULL,
+  `user_email` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `restaurant_name` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `restaurant_postal_code` int(16) NOT NULL DEFAULT '0',
+  `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `review_updated_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`user_email`,`restaurant_name`,`restaurant_postal_code`,`updated_on`,`review_updated_on`),
+  KEY `restaurant_name` (`restaurant_name`,`restaurant_postal_code`,`review_updated_on`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`content`, `user_email`, `restaurant_name`, `restaurant_postal_code`, `updated_on`, `review_updated_on`) VALUES
+('this is a comment!', 'user1@gmail.com', 'Ameen', 11928, '2012-11-04 12:02:20', '2012-11-04 12:03:10');
 
 -- --------------------------------------------------------
 
@@ -48,10 +72,17 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Stand-in structure for view `ratings`
 --
 CREATE TABLE IF NOT EXISTS `ratings` (
-`restaurant_name` varchar(128)
-,`restaurant_postal_code` int(16)
-,`avg_food_rating` decimal(14,4)
-,`avg_service_rating` decimal(14,4)
+`name` varchar(128)
+,`postal_code` int(16)
+,`url` varchar(128)
+,`address` varchar(256)
+,`location` varchar(64)
+,`phone` varchar(16)
+,`website` varchar(64)
+,`timing` varchar(128)
+,`cuisine` varchar(32)
+,`food_rating` decimal(14,4)
+,`service_rating` decimal(14,4)
 ,`recommend_percent` decimal(27,4)
 );
 -- --------------------------------------------------------
@@ -85,7 +116,8 @@ INSERT INTO `restaurants` (`name`, `postal_code`, `url`, `address`, `location`, 
 ('La Braceria Pizza and Grill', 54321, 'la-braceria-pizza-and-grill-54321', 'Clementi Mall', 'Ang Mo Kio', '3339210', 'http://google.com', 'Daily 5pm-11.30pm', 'Italian'),
 ('Ochre (Orchard Central)', 281946, 'ochre-orchard-central-281946', 'Orchard Road', 'Bugis', '6549302', 'http://google.com', 'Daily 5pm-11.30pm', 'Western'),
 ('Sarpino''s Pizzeria (East Coast)', 192837, 'sarpinos-pizzeria-east-coast-192837', 'East Coast Park. Marine Parade Road', 'Bedok', '67875435', 'http://google.com', 'Daily 5pm-11.30pm', 'Italian'),
-('Uncle Vincent', 1000, 'uncle-vincent-1000', '19 Kent Ridge Crescent', 'West Coast', '33345674', NULL, 'Monday to Thursday 10pm-3am', 'Chinese');
+('Uncle Vincent', 1000, 'uncle-vincent-1000', '19 Kent Ridge Crescent', 'West Coast', '33345674', NULL, 'Monday to Thursday 10pm-3am', 'Chinese'),
+('YIH Food court', 12345, 'yih-food-court-12345', 'Kent Ridge', 'Chinatown', '4448329', '', '24 hours', 'Chinese');
 
 -- --------------------------------------------------------
 
@@ -105,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `restaurantsview` (
 ,`food_rating` decimal(14,4)
 ,`service_rating` decimal(14,4)
 ,`recommend_percent` decimal(27,4)
+,`review_count` bigint(21)
 );
 -- --------------------------------------------------------
 
@@ -134,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 --
 
 INSERT INTO `reviews` (`updated_on`, `user_email`, `restaurant_name`, `restaurant_postal_code`, `title`, `content`, `food_rating`, `service_rating`, `recommend`, `url`) VALUES
-
+('2012-11-04 04:01:49', 'user1@gmail.com', 'Ameen', 11928, 'Great restaurant', 'nothing much to say', 4, 3, 1, 'user1gmailcom-ameen-11928-2012-11-03-21-01-49'),
 ('2012-11-04 04:10:39', 'user2@gmail.com', 'Daisy''s Dream Kitchen (West Coast)', 1781, 'hearty home cooked peranaka dishes ...to easy the pain when you fail your driving test', 'we had a group meal at daisy''s last week and i must say cooking for 15pax hungry foodies isn''t an easy task, we called in last mintue and managed to get a large group table booking. arrived and had the bubbly manager oreded 3 of each of their famous dishes... and boy did we hava a peranaka feast, i must say the consistancy which the food was served was impressive, its hard to cook for a large group with very little waiting time in between dishes.. dishes came out propmly and also got snapped up promply by us!i highly recomomed these few dishes if you feel down and lousy,like a bad break-up or even failing your driving test for the 6th time... nothing daisy''s perenakan food cannot cure..or at least ease the pain...here''s my experienc that night, i must say their killer new dish the "Asam ikan" dish is a must, pomfret cooked in asam, lemon grass, lady''s finger (okra) & abugine, its so good i was hoging the dish!,  the "Black ink Sotong" ( shiok, with the sotong roe and all...yummy), " Petai Sambal ikan bilis" (petai & baba can''t got wrong), "Homemade Otak Otak" (champion!!),  "Babi Buah Keluak" (it made me teared with joy while eating it), "Bakwan Kepiting Soup" super yummy minced pork & crab meat balls in chicken & bamboo-shoot broth to wash down all the flavourful yummy dishes (brought back memories of my childhood) was so good that i had 2 and a half bowls of rice... and to top it all of a bowl of warm "pulot itam: with extra coconut milk for desert . there were a whole lot more other dishes, like the fried chicken, babi pongtei, chap chay, ngoh hiang, they were good i presume, as i didnt get to taste them this time,because by the time the dish came round our end it was all cleaned up. i could only write what i had and had my eye on. The overall experience was sure worth it, it came up to be about $41 per/person.  Some might say its slightly pricy, but do put in the thought of them using the best ingredients and produce to cook the  delicious dishes with...you pay for what you get, the food at Daisy''s dream Kitchen sure is super tasty and hits the spot for the 15 of us. plus how often do we get proper home cooked style peranakan food now a days in Singapore?best enjoyed with a group of mates as you get to order more dishes and try them.  ', 5, 5, 1, 'user2gmailcom-daisys-dream-kitchen-west-coast-1781-2012-11-03-21-05-35'),
 ('2012-11-04 04:10:39', 'user2@gmail.com', 'Kilo at Pact', 12345, 'Nice pizza for delivery', 'Monday (11 Feb 08). As LL, MS, AW and myself were having a Wii gaming session, we did not want to interrupt the session to seek our lunch, so we decided to call for delivery. We ordered two medium sized 12" pizzas ($23.80 for first pizza, $12.00 for the second pizza). We ordered Classico Italiano and Zesty Italian. The great thing about Sarpino''s is that every 2nd pizza goes for half the price!\r\n\r\nThe pizzas were delivered promptly and were still hot. It was my first time eating Sarpino''s pizza and I found it pretty decent. The crust was light and not soggy. There was a reasonable quantity of toppings and the pizzas tasted good!', 3, 5, 1, 'user2gmailcom-kilo-at-pact-12345-2012-11-03-21-05-35'),
 ('2012-11-04 04:10:39', 'user2@gmail.com', 'La Braceria Pizza and Grill', 54321, 'Good presentation & delicious food.', 'Enjoy the food we ordered: Steamed chicken soup with fungus & herbs, beef cubes fried with onion, green pepper, mushroom etc., braised duck wings & mixed veg.  Nice presentation as well. ', 4, 4, 1, 'user2gmailcom-la-braceria-pizza-and-grill-54321-2012-11-03-21-05-35'),
@@ -145,11 +178,11 @@ INSERT INTO `reviews` (`updated_on`, `user_email`, `restaurant_name`, `restauran
 ('2012-11-04 04:10:39', 'user4@gmail.com', 'Ochre (Orchard Central)', 281946, 'Poor service', 'My hubby booked a table for dinner to celebrate my birthday with friends. What really ruined the celebration was the waitress serving us. She took our orders but did not repeat them back to us, which probably resulted in the following error. My cousin ordered the veal but she brought out the ravioli. When we told her that we ordered the veal instead, she insisted that we ordered the ravioli. After we said no twice, she went off to check her serving chit, came back and insisted my cousin ordered the ravioli. Now mind you, my cousin was sitting next to me, I heard her loud and clear. She definitely said veal, others at the table heard her too. It was not like we changed our orders when placing them and we placed our orders in order, one after another. The waitress then went away and returned and tried to dissuade us from having the veal by saying that it would take "a very very long time". We had to ask her twice before she finally disclosed that her version of "a very very long time" meant 10-15 minutes. We were okay with the wait time since most of us were still waiting for our food.\r\n\r\nSo the waitress had no choice but to correct her mistake in our order. Right from the begining her demeanour was dour and sulky. Not once did she apologize for the error, instead repeatedly tried to blame us for her error. If only the staff were trained to repeat back the orders before sending the order to the kitchen. She did give us the ravioli on the house since it was already cooked but her handling of the situation had already soured the mood.\r\n\r\nFood was above average but not fantastic. The main gripe was with the 2 tenderloins we ordered. The amount of sauce that came with it was so stingy that it hardly covered the piece of steak. Needless to say, after 4 bites, I ran out of sauce and resorted to dipping my steak into the sauce that accompanied the veal. If the steak was not meant to be eaten with the sauce, there should be NO sauce. But providing 1 tablespoon of sauce is unacceptable.', 3, 1, 0, 'user4gmailcom-ochre-orchard-central-281946-2012-11-03-21-05-35'),
 ('2012-11-04 04:10:39', 'user4@gmail.com', 'Sarpino''s Pizzeria (East Coast)', 192837, 'food ok but price no ok', 'if i know the price is considered very very expensive for hdb area, i would not go there, i rather go to restaurant at shopping mall, at first, i tot the location is at quite remote hdb area, the price should be ok, when they served the food it is so small portion, 5 small ngoh hiong for $8, one small bowl of chap chye $8 (and nothing special) the rice is $1 per plate, it is equivalent price at shopping mall restaurant, unless they are using nohya rice, ha ha ha. if u cannot imagine how the price look like, they are selling one canned drink at $2.50 exclusive service charge at 10 percent, so you need to pay $2.75 for one canned of drink at hdb area. when i called and feedback to them, it seemed like he was very rushed to put down the phone. \r\n', 4, 2, 0, 'user4gmailcom-sarpinos-pizzeria-east-coast-192837-2012-11-03-21-05-35'),
 ('2012-11-04 04:10:39', 'user4@gmail.com', 'Uncle Vincent', 1000, 'Nice but $$$!!!', 'I''ve heard rave reviews about the Peranakan cuisine served here and decided to bring some friends to check the place out together. \r\n\r\nWe ordered quite a few dishes and the taste is actually all good. The only problem for me is the price of things. The dishes tho tasty, it''s serving is small. Thus, we had to order a lot of items. \r\n\r\nAnother downer was the price of rice. It''s at $1 a bowl and it''s a pretty small bowl! Not the big mound of rice given in Zichar places at all. So the 7 adults and 2 kids paid $14 just for rice! \r\n\r\nThe owners and staff are friendly and attentive but I don''t think I''ll return unless it''s a treat. Not quite worth it''s weight in gold for me.\r\n', 5, 4, 0, 'user4gmailcom-uncle-vincent-1000-2012-11-03-21-05-35'),
-('2012-11-04 04:10:40', 'user1@gmail.com', 'Ameen', 11928, 'adsf', 'asdf', 3, 5, 1, 'user1gmailcom-ameen-11928-2012-11-03-21-05-35'),
 ('2012-11-04 04:10:40', 'user1@gmail.com', 'Ochre (Orchard Central)', 281946, 'dsdfddf', 'asdf', 1, 5, 1, 'user1gmailcom-ochre-orchard-central-281946-2012-11-03-21-05-35'),
 ('2012-11-04 04:11:44', 'user2@gmail.com', 'Ochre (Orchard Central)', 281946, 'Lost their touch', 'I used to like Sarpino''s pizzas, but they''ve been going steadily downhill for the past few years. On Friday I made, what is possibly going to be my last order with them. \r\n\r\nThe pizzas had a layer of tomato sauce that was far too thick, making the bases soggier than they should be, the meat was not good quality and had too much gristle in it and to top it all, one of the pizzas had a hair in it...........and I know it wasn''t from anyone in our house!\r\n\r\nSingapore is supposed to have strict hygiene rules and I would have thought that one of the rules is that staff working in food preparation should wear appropriate head coverings to stop this from happening. I can only assume that Sarpino''s don''t follow good hygiene rules and therefore I won''t be ordering from them again.', 3, 4, 1, 'user2gmailcom-ochre-orchard-central-281946-2012-11-03-21-11-30'),
 ('2012-11-04 04:52:44', 'user4@gmail.com', 'Kilo at Pact', 12345, 'Literal Hidden Find; Classy Italian Fine Dining', 'Caught up with my university group mates over dinner, and we decided on La Braceria Pizza And Grill, known for its authentic Italian food. \r\n\r\nFinding thee restaurant was a challenge. Located in the suburbs of Greenwood, at Greenwood Avenue, La Braceria Pizza And Grill is hidden behind a wall of plants, effectively blocking their signage and storefront. And at night, the road that runs alongside it is totally dark, making it easy to miss. I actually walked by La Braceria Pizza And Grill twice, before I finally found the entrance between two plants. \r\n\r\nThis is definitely not a restaurant you can stumble upon easily, and so, La Braceria Pizza And Grill is relatively quiet and perfect for romantic dates or quiet dinners. \r\n\r\nWe had 2 pizzas, the Alla Bismark, and the Alla Braceria. The pizzas were tasty, and I particularly like the poached egg in the middle of the Alla Braceria. The ingredients were fresh, although a little more of it would have been nice. \r\n\r\nWe also tried the Ravioli Della Casa, a hand-made ravioli pasta stuffed with cheese. While I appreciate the effort to make it, the portion size was more like an appetizer than an entree, and served on a big plate, it just looked underwhelming. It did score points on taste however, and I recommend it for sharing among friends, more than as a main course. \r\n\r\nI tried the house wine that day, and I absolutely hated it. Tasted exactly like cheap wine... Bitter, and not aged. Should have gone with the other wines available. \r\n\r\nWill try their pasta and anti-pasta some other time, though I''ll probably only visit this place for special occasions rather than regular dining.', 1, 1, 0, 'user4gmailcom-kilo-at-pact-12345-2012-11-03-21-05-35'),
-('2012-11-04 05:17:49', 'user4@gmail.com', 'Daisy''s Dream Kitchen (West Coast)', 1781, 'Based on my Experience', 'I''m a regular customer at the restaurant stated aboved. From what I know, during their peak hours(especially lunch & dinner) its awfully crowded so patience is most needed when you intend to dine in there. As what I know, usually during their opening hours I could see lots of big containers stacked at the far end of the restaurant so that could be their stocks to sell for the day. So its obvious that most of the items are not ready to be sold yet.Some of the customers are even willing to wait till the few selection of dishes to be ready. And some even tend to get angry over such a small issue, chill dude ! The restaurant just started their operation not EVERYTHING is ready yet..like duuhhh ! If you want to have that certain dish so much then you can just come back later and have it. Each and every customer dining in there were given an order form and clearly the form stated "Please Order and make Payment at the Cashier" isn''t that even obvious for you? Then why would even they handed you the order form in the first place o.O really stupid right? Its common sense. Pffftt ! Just a simple "Please Wait to be Seated" request from the restaurant its hard to follow and yet customers just stand around the entrance waiting for someone to attend to them. What the heck ?! And also quite a number of times I see "Monkey See Monkey Do" happening right infront of the entrance while the signage is also located nearby there. -___-" haiyahhh.. really cust can''t read I guess. LOL Main objective of me writing this review, Please have some sense of understanding and cooperation towards the staff there. You can see for yourselves how compact their duties are when its during peak hours. Just kindly approach any one of the staff. Well like a saying, "If you are unsure about anything, just ask" sinple right? Don''t simply judge a book by its cover. Overall the staff there are friendly and approachable.  ', 3, 4, 0, 'user4gmailcom-daisys-dream-kitchen-west-coast-1781-2012-11-03-21-05-35');
+('2012-11-04 05:17:49', 'user4@gmail.com', 'Daisy''s Dream Kitchen (West Coast)', 1781, 'Based on my Experience', 'I''m a regular customer at the restaurant stated aboved. From what I know, during their peak hours(especially lunch & dinner) its awfully crowded so patience is most needed when you intend to dine in there. As what I know, usually during their opening hours I could see lots of big containers stacked at the far end of the restaurant so that could be their stocks to sell for the day. So its obvious that most of the items are not ready to be sold yet.Some of the customers are even willing to wait till the few selection of dishes to be ready. And some even tend to get angry over such a small issue, chill dude ! The restaurant just started their operation not EVERYTHING is ready yet..like duuhhh ! If you want to have that certain dish so much then you can just come back later and have it. Each and every customer dining in there were given an order form and clearly the form stated "Please Order and make Payment at the Cashier" isn''t that even obvious for you? Then why would even they handed you the order form in the first place o.O really stupid right? Its common sense. Pffftt ! Just a simple "Please Wait to be Seated" request from the restaurant its hard to follow and yet customers just stand around the entrance waiting for someone to attend to them. What the heck ?! And also quite a number of times I see "Monkey See Monkey Do" happening right infront of the entrance while the signage is also located nearby there. -___-" haiyahhh.. really cust can''t read I guess. LOL Main objective of me writing this review, Please have some sense of understanding and cooperation towards the staff there. You can see for yourselves how compact their duties are when its during peak hours. Just kindly approach any one of the staff. Well like a saying, "If you are unsure about anything, just ask" sinple right? Don''t simply judge a book by its cover. Overall the staff there are friendly and approachable.  ', 3, 4, 0, 'user4gmailcom-daisys-dream-kitchen-west-coast-1781-2012-11-03-21-05-35'),
+('2012-11-04 12:03:10', 'user1@gmail.com', 'Ameen', 11928, 'Not too bad', 'Kampong fried rice is nice', 3, 5, 1, 'user1gmailcom-ameen-11928-2012-11-03-21-05-35');
 
 -- --------------------------------------------------------
 
@@ -185,9 +218,8 @@ INSERT INTO `users` (`email`, `username`, `password`, `account_type`, `updated_o
 --
 DROP TABLE IF EXISTS `ratings`;
 
-CREATE VIEW ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
-SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
-FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
+CREATE VIEW `ratings` AS select `r`.`restaurant_name` AS `name`,`r`.`restaurant_postal_code` AS `postal_code`,`res`.`url` AS `url`,`res`.`address` AS `address`,`res`.`location` AS `location`,`res`.`phone` AS `phone`,`res`.`website` AS `website`,`res`.`timing` AS `timing`,`res`.`cuisine` AS `cuisine`,avg(`r`.`food_rating`) AS `food_rating`,avg(`r`.`service_rating`) AS `service_rating`,(sum((`r`.`recommend` = 1)) / count(`r`.`recommend`)) AS `recommend_percent` from (`reviews` `r` join `restaurants` `res`) where ((`res`.`name` = `r`.`restaurant_name`) and (`res`.`postal_code` = `r`.`restaurant_postal_code`)) group by `r`.`restaurant_name`,`r`.`restaurant_postal_code`;
+
 -- --------------------------------------------------------
 
 --
@@ -195,13 +227,18 @@ FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
 --
 DROP TABLE IF EXISTS `restaurantsview`;
 
-CREATE VIEW restaurantsview(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
-SELECT r.restaurant_name, r.restaurant_postal_code, res.url, res.address, res.location, res.phone, res.website, res.timing, res.cuisine, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
-FROM reviews r, restaurants res WHERE res.name = r.restaurant_name AND res.postal_code = r.restaurant_postal_code 
-GROUP BY r.restaurant_name, r.restaurant_postal_code;
+CREATE VIEW `restaurantsview` AS select `r1`.`restaurant_name` AS `name`,`r1`.`restaurant_postal_code` AS `postal_code`,`res1`.`url` AS `url`,`res1`.`address` AS `address`,`res1`.`location` AS `location`,`res1`.`phone` AS `phone`,`res1`.`website` AS `website`,`res1`.`timing` AS `timing`,`res1`.`cuisine` AS `cuisine`,avg(`r1`.`food_rating`) AS `food_rating`,avg(`r1`.`service_rating`) AS `service_rating`,(sum((`r1`.`recommend` = 1)) / count(`r1`.`recommend`)) AS `recommend_percent`,count(0) AS `review_count` from (`reviews` `r1` join `restaurants` `res1`) where ((`res1`.`name` = `r1`.`restaurant_name`) and (`res1`.`postal_code` = `r1`.`restaurant_postal_code`)) group by `r1`.`restaurant_name`,`r1`.`restaurant_postal_code` union select `res2`.`name` AS `name`,`res2`.`postal_code` AS `postal_code`,`res2`.`url` AS `url`,`res2`.`address` AS `address`,`res2`.`location` AS `location`,`res2`.`phone` AS `phone`,`res2`.`website` AS `website`,`res2`.`timing` AS `timing`,`res2`.`cuisine` AS `cuisine`,NULL AS `NULL`,NULL AS `NULL`,NULL AS `NULL`,0 AS `0` from `restaurants` `res2` where (not(exists(select 1 from `reviews` `r2` where ((`res2`.`name` = `r2`.`restaurant_name`) and (`res2`.`postal_code` = `r2`.`restaurant_postal_code`)))));
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`, `review_updated_on`) REFERENCES `reviews` (`restaurant_name`, `restaurant_postal_code`, `updated_on`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `menu`

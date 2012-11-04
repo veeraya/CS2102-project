@@ -35,7 +35,7 @@ CREATE TABLE  `reviews` (
 `updated_on` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
 `user_email` VARCHAR( 32 ),
 `restaurant_name` VARCHAR( 128 ),
-`restaurant_postal_code` INT( 16 ),
+`restaurant_postal_code` INT,
 `title` VARCHAR( 128 ) NOT NULL ,
 `content` VARCHAR( 8192 ) NOT NULL ,
 `food_rating` INT NOT NULL ,
@@ -104,6 +104,28 @@ PRIMARY KEY (  `name` ,  `restaurant_name`, `restaurant_postal_code` ),
 FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`) REFERENCES restaurants(`name`, `postal_code`)  ON UPDATE CASCADE ON DELETE CASCADE
 )
 
+CREATE TABLE commennt (
+`content` VARCHAR( 1028 ) ,
+`user_email` VARCHAR( 32 ) ,
+`restaurant_name` VARCHAR( 128 ),
+`restaurant_postal_code` INT( 16 ),
+PRIMARY KEY (  `user_email` ,  `restaurant_name`, `restaurant_postal_code` ),
+FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`) REFERENCES restaurants(`name`, `postal_code`)  ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (`user_email`) REFERENCES `cs2102`.`users` (`email`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE comment (
+`content` VARCHAR( 1028 ) NOT NULL,
+`user_email` VARCHAR( 32 ) ,
+`restaurant_name` VARCHAR( 128 ),
+`restaurant_postal_code` INT( 16 ),
+`updated_on` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`review_updated_on` TIMESTAMP,
+PRIMARY KEY (  `user_email` ,  `restaurant_name`, `restaurant_postal_code`, `updated_on`, `review_updated_on` ),
+FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`, `review_updated_on`) REFERENCES reviews(`restaurant_name`, `restaurant_postal_code`, `updated_on`)  ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (`user_email`) REFERENCES users(`email`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
 SELECT AVG( food_rating ) 
 FROM reviews
 WHERE (
@@ -117,7 +139,7 @@ SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.se
 FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
 
 // mega restaurant view!
-CREATE VIEW restaurantsview(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
+CREATE VIEW ratings(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
 SELECT r.restaurant_name, r.restaurant_postal_code, res.url, res.address, res.location, res.phone, res.website, res.timing, res.cuisine, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
 FROM reviews r, restaurants res WHERE res.name = r.restaurant_name AND res.postal_code = r.restaurant_postal_code 
 GROUP BY r.restaurant_name, r.restaurant_postal_code;
