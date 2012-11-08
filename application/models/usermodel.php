@@ -44,5 +44,11 @@ class UserModel extends CI_Model {
 		$this->db->query($queryString);
 		return $data;
 	}
+
+	public function delete($username){
+		$queryString = "DELETE from users WHERE username = '".$username."'";
+		$this->db->query($queryString);
+		return;
+	}
 }
 ?>

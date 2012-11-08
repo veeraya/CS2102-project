@@ -75,5 +75,10 @@ class Users extends CI_Controller{
 			redirect('users/view/'.$user[username]);
 		}
 	}
+
+	public function delete($username){
+		$this->UserModel->delete($username);
+		redirect('users/index'); 
+	}
 }
  ?>

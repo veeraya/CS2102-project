@@ -1,8 +1,8 @@
 <div class="container_12">
-<!--  	<?php echo "<pre>";
-	echo var_dump($query);
+  	<?php echo "<pre>";
+	echo $_SERVER['HTTP_REFERER'];
 	echo "</pre>";
-	?> -->
+	?> 
 <a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
 <?php foreach ($restaurants as $restaurant): ?>
 
