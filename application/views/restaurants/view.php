@@ -11,8 +11,18 @@
 	<b>Service Rating:</b> <?php echo $restaurant['service_rating'] ?><br />
 	<b>% recommended:</b> <?php echo $restaurant['recommend_percent'] ?><br />
 	<a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
-    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
+    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a><br />
 	
+    <!-- admin function -->
+    <?php if ($this->session->userdata['account_type'] == "admin"){
+        $editUrl = base_url()."index.php/restaurants/".$restaurant['url']."/edit";
+        $deleteUrl = base_url()."index.php/restaurants/".$restaurant['url']."/delete";
+        echo <<<"EOT"
+        <a href="$editUrl">Edit restaurant details</a><br />
+        <a href="$deleteUrl">Delete restaurant</a><br />
+EOT;
+    }
+    ?>
     <!-- The menu is hard-coded because there's no time left!-->
 	<h3>Menu</h3>
 	<b>Spaghetti Carbonara</b><br/>

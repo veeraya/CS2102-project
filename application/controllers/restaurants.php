@@ -38,6 +38,18 @@ class Restaurants extends CI_Controller{
 		redirect('restaurants/'.$url);
 	}
 
+	public function edit($url){
+		$data['restaurant'] = $this->RestaurantModel->getRestaurantByUrl($url);
+		$this->load->view('templates/header');
+		$this->load->view('restaurants/edit', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function processEdit(){
+		$url = $this->RestaurantModel->edit();
+		redirect('restaurants/'.$url);
+	}
+
 	public function best(){
 		$data['bestFoodRating'] = $this->RestaurantModel->bestFoodRating();
 		$data['bestServiceRating'] = $this->RestaurantModel->bestServiceRating();

@@ -58,6 +58,24 @@ class RestaurantModel extends CI_Model {
 		return;
 	}
 
+	public function edit(){
+		$name =  $this->input->post('name');
+		$postalCode = $this->input->post('postalCode');
+		$url = url_title($name." ".$postalCode, 'dash', TRUE);	
+		$address =  $this->input->post('address');
+		$location =  $this->input->post('location');
+		$phone =  $this->input->post('phone');
+		$website =  $this->input->post('website');
+		$timing =  $this->input->post('timing');
+		$cuisine =  $this->input->post('cuisine');
+		$oldName = $this->input->post('oldName');
+		$oldPostalCode = $this->input->post('oldPostalCode');
+		$queryString = "UPDATE restaurants SET name = ? , postal_code = ?, url = ?, address = ?, location = ?, phone = ?, website = ?, timing = ?, cuisine = ? ";
+		$queryString = $queryString."WHERE name = ? AND postal_code = ?";
+		$this->db->query($queryString, array($name, $postalCode, $url, $address, $location, $phone, $website, $timing, $cuisine, $oldName, $oldPostalCode));
+		return $url;
+	}
+
 	public function getRandomRestaurants($noOfRestaurants){
 		$queryString = "SELECT * FROM restaurantsview ORDER BY RAND( ) LIMIT ".$noOfRestaurants;
 		$query = $this->db->query($queryString);
