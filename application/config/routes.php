@@ -46,6 +46,7 @@ $route['restaurants/(:any)/processCreateReview'] = 'reviews/processcreate/$1';
 $route['restaurants/create'] = 'restaurants/create';
 $route['restaurants/createRestaurant'] = 'restaurants/createrestaurant';
 $route['restaurants/best'] = 'restaurants/best';
+$route['restaurants/(:any)/delete'] = 'restaurants/delete/$1';
 $route['restaurants/(:any)'] = 'restaurants/view/$1';
 $route['restaurants'] = 'restaurants/index';
 

@@ -168,3 +168,5 @@ FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
 -- FROM reviews r, restaurants res WHERE res.name = r.restaurant_name AND res.postal_code = r.restaurant_postal_code 
 -- GROUP BY r.restaurant_name, r.restaurant_postal_code;
 
+DELETE FROM users
+WHERE 

@@ -52,6 +52,12 @@ class RestaurantModel extends CI_Model {
 		// return $results;
 	}
 
+	public function delete($url){
+		$queryString = "DELETE from restaurants WHERE url = '".$url."'";
+		$this->db->query($queryString);
+		return;
+	}
+
 	public function getRandomRestaurants($noOfRestaurants){
 		$queryString = "SELECT * FROM restaurantsview ORDER BY RAND( ) LIMIT ".$noOfRestaurants;
 		$query = $this->db->query($queryString);

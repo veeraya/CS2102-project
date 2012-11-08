@@ -46,5 +46,10 @@ class Restaurants extends CI_Controller{
 		$this->load->view('restaurants/best', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function delete($url){
+		$this->RestaurantModel->delete($url);
+		redirect('restaurants');
+	}
 }
  ?>
