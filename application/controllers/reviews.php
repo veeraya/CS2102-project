@@ -8,11 +8,15 @@ class Reviews extends CI_Controller{
 	}
 
 	public function index(){
-
-		$data['reviews'] = $this->ReviewModel->getAllReviews();
-		$this->load->view('templates/header');
-		$this->load->view('reviews/index', $data);
-		$this->load->view('templates/footer');
+		if ($this->session->userdata('account_type') == "admin"){
+			$data['reviews'] = $this->ReviewModel->getAllReviews();
+			$this->load->view('templates/header');
+			$this->load->view('reviews/index', $data);
+			$this->load->view('templates/footer');
+		}
+		else {
+			redirect('auth/unauthorized');
+		}
 	}
 
 	public function view($url){
@@ -64,7 +68,10 @@ class Reviews extends CI_Controller{
 
 	public function delete($url){
 		$this->ReviewModel->delete($url);
-		redirect($_SERVER['HTTP_REFERER']);
+		if (strpos($_SERVER['HTTP_REFERER'], "reviews/view") === FALSE)
+			redirect($_SERVER['HTTP_REFERER']);
+		else
+			redirect('/');
 	}
 }
  ?>

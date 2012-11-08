@@ -1,4 +1,7 @@
-
+<?php 
+if ($this->session->userdata('account_type') != "admin" && $review['user_email'] != $this->session->userdata('email')){
+	redirect('auth/unauthorized');
+} ?>
 <div class="container_12">
 <form action="<?php echo base_url(); ?>index.php/reviews/processEdit" method="post" name="processEdit">
 	<h2>Edit your review</h2>
