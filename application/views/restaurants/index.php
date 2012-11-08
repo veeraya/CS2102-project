@@ -17,7 +17,17 @@
     Service Rating: <?php echo $restaurant['service_rating'] ?><br />
     % recommended: <?php echo ($restaurant['recommend_percent']*100); ?><br />
     <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/reviews">View reviews</a><br />
-    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a>
+    <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a><br />
 
+    <!-- admin function -->
+    <?php if ($this->session->userdata['account_type'] == "admin"){
+        $editUrl = base_url()."index.php/restaurants/".$restaurant['url']."/edit";
+        $deleteUrl = base_url()."index.php/restaurants/".$restaurant['url']."/delete";
+        echo <<<"EOT"
+        <a href="$editUrl">Edit restaurant details</a><br />
+        <a href="$deleteUrl">Delete restaurant</a><br />
+EOT;
+    }
+    ?>
 <?php endforeach ?>
 </div>
