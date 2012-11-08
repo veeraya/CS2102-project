@@ -46,5 +46,11 @@ class Auth extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect('auth/login');
 	}
+
+	public function unauthorized(){
+		$this->load->view('templates/header');
+		$this->load->view('auth/unauthorized');
+		$this->load->view('templates/footer');
+	}
 }
  ?>

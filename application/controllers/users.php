@@ -8,9 +8,13 @@ class Users extends CI_Controller{
 	}
 
 	public function index(){
-		$data['users'] = $this->UserModel->getAllUsers();
-		$this->load->view('templates/header');
-		$this->load->view('users/index', $data);
+		if ($this->session->userdata('account_type') == "admin"){
+			$data['users'] = $this->UserModel->getAllUsers();
+			$this->load->view('templates/header');
+			$this->load->view('users/index', $data);
+		}
+		else redirect('auth/unauthorized');
+		
 	}
 
 	public function view($username){
@@ -21,7 +25,6 @@ class Users extends CI_Controller{
 		$this->load->view('templates/header');
 		$this->load->view('users/view', $data);
 		$this->load->view('templates/footer');
-
 		}
 		else{
 			$errorMsg = "You need to log-in to view this page<br />";
