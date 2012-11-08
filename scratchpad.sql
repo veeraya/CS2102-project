@@ -131,13 +131,6 @@ FROM restaurants res2 WHERE NOT EXISTS (SELECT * FROM reviews r2
 WHERE res2.name = r2.restaurant_name AND res2.postal_code = r2.restaurant_postal_code)
 
 
-SELECT * FROM restaurantsview r1
-WHERE  AND r2.cuisine = 'Indian' AND NOT EXISTS(
-SELECT * from restaurantsview r2
-WHERE
-r1.cuisine = 'Indian' AND
-r1.recommend_percent < r2.recommend_percent)
-
 DELETE FROM reviews WHERE
 user_email = 'email@email.com' AND restaurant_name = 'KFC' 
 AND restaurant_postal_code = '28399' AND updated_on = '2012-11-04 04:10:40'
@@ -151,10 +144,23 @@ AND restaurant_postal_code =  '281946'
 )
 CREATE TABLE comments (`content` VARCHAR( 1028 ) NOT NULL,`user_email` VARCHAR( 32 ) ,`restaurant_name` VARCHAR( 128 ),`restaurant_postal_code` INT( 16 ),`updated_on` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,`review_updated_on` TIMESTAMP,PRIMARY KEY (  `user_email` ,  `restaurant_name`, `restaurant_postal_code`, `updated_on`, `review_updated_on` ),FOREIGN KEY (`restaurant_name`, `restaurant_postal_code`, `review_updated_on`) REFERENCES reviews(`restaurant_name`, `restaurant_postal_code`, `updated_on`)  ON UPDATE CASCADE ON DELETE CASCADE,FOREIGN KEY (`user_email`) REFERENCES users(`email`) ON UPDATE CASCADE ON DELETE CASCADE)
 
--- // edited view code with recommend percent
--- CREATE VIEW Ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
--- SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
--- FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
+
+SELECT * FROM restaurantsview r1 
+WHERE r1.cuisine = 'Indian' 
+AND r1.review_count > 1 AND NOT EXISTS(
+SELECT * FROM restaurantsview r2 
+WHERE r2.cuisine = 'Indian' AND r2.review_count > 1 
+AND r1.recommend_percent < r2.recommend_percent)
+
+// edited view code with recommend percent
+CREATE VIEW Ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
+SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
+FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
+
+
+CREATE VIEW Ratings(restaurant_name, restaurant_postal_code, avg_food_rating, avg_service_rating, recommend_percent) As
+SELECT r.restaurant_name, r.restaurant_postal_code, AVG(r.food_rating), AVG(r.service_rating), SUM(r.recommend=1) / COUNT(r.recommend) 
+FROM reviews r GROUP BY r.restaurant_name, r.restaurant_postal_code;
 
 
 -- CREATE VIEW ratings(name, postal_code, url, address, location, phone, website, timing, cuisine, food_rating, service_rating, recommend_percent) AS
