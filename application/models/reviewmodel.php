@@ -73,5 +73,10 @@ class ReviewModel extends CI_Model{
 		$query = $this->db->query($queryString);
 		return $query->result_array();
 	}
+
+	public function delete($url){
+		$queryString = "DELETE from reviews WHERE url = '".$url."'";
+		$this->db->query($queryString);
+	}
 }
  ?>

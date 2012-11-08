@@ -8,8 +8,13 @@
 	<b>Food rating:</b> <?php echo $review['food_rating'] ?><br />
 	<b>Service rating:</b> <?php echo $review['service_rating'] ?><br />
 	<b>Recommend:</b>  <?php if ($review['recommend'] == 1) echo "Yes"; else echo "No"; ?><br />
-	<b>Url:</b> <?php echo $review['url'] ?>
-	<br /><br />
+	<b>Url:</b> <?php echo $review['url'] ?><br />	
+	<?php 
+		$editUrl = base_url()."index.php/reviews/edit/".$review['url'];
+		$deleteUrl = base_url()."index.php/reviews/delete/".$review['url'];
+		echo "<a href=\"$editUrl\">Edit review</a><br />";
+		echo "<a href=\"$deleteUrl\">Delete review</a><br /><br />";
+	?>
 
 <?php endforeach ?>
 </div>

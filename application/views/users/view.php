@@ -58,8 +58,8 @@ ABC;
 	<br />
 	<?php if ($user['username'] == $this->
 	session->userdata('username') || $this->session->userdata('account_type') == "admin"){
-	$editUrl = base_url()."index.php/reviews/edit/".$review['url'];
-	$deleteUrl = "#";
+	$editUrl = 
+	$deleteUrl = base_url()."index.php/reviews/delete/".$review['url'];
 	echo "<a href=\"$editUrl\">Edit review</a><br />";
 	echo "<a href=\"$deleteUrl\">Delete review</a><br />";}
 	?>

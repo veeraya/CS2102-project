@@ -60,7 +60,11 @@ class Reviews extends CI_Controller{
 	public function processEdit(){
 		$url = $this->ReviewModel->edit();
 		redirect('reviews/view/'.$url);
+	}
 
+	public function delete($url){
+		$this->ReviewModel->delete($url);
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 }
  ?>
