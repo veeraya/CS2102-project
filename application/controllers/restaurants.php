@@ -4,6 +4,7 @@ class Restaurants extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('RestaurantModel');
+		
 	}
 
 	public function index(){
@@ -14,7 +15,9 @@ class Restaurants extends CI_Controller{
 	}
 
 	public function view($url){
+		$this->load->model('MenuModel');
 		$data['restaurant'] = $this->RestaurantModel->getRestaurantByUrl($url);
+		$data['menu'] = $this->MenuModel->getMenuByRestaurant($data['restaurant']['name'], $data['restaurant']['postal_code']);
 		$this->load->view('templates/header');
 		$this->load->view('restaurants/view', $data);
 		$this->load->view('templates/footer');

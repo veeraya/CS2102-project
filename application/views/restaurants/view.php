@@ -23,19 +23,15 @@
 EOT;
     }
     ?>
-    <!-- The menu is hard-coded because there's no time left!-->
 	<h3>Menu</h3>
-	<b>Spaghetti Carbonara</b><br/>
-	<b>Price:</b> $14<br/>
-	<b>Type:</b> Main Course<br />
-	<b>Cuisine:</b> Italian<br />
-	<b>Description:</b> Chef's favourite!<br /><br />
-	
-	<b>Hawaiian Pizza</b><br/>
-	<b>Price:</b> $14<br/>
-	<b>Type:</b> Main Course<br />
-	<b>Cuisine:</b> Italian<br />
-	<b>Description:</b> Extra pineapple for hot sunny day<br />
+	<a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createMenu">Add menu</a><br /><br />
+	<?php foreach ($menu as $m): ?>
 
-	
+	<b><?php echo $m['name'] ?></b><br/>
+	<b>Price:</b> $<?php echo $m['price'] ?><br/>
+	<b>Type:</b> <?php echo $m['type'] ?><br />
+	<b>Cuisine:</b> <?php echo $m['cuisine'] ?><br />
+	<b>Description:</b><?php echo $m['description'] ?><br /><br />
+
+	<?php endforeach; ?>
 </div>

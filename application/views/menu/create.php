@@ -13,9 +13,6 @@
 	 <label for="cuisine">Cuisine</label>
 	 <input type="text" name="cuisine" id="cuisine" /><br />
 
-	 <label for="website">Website</label>
-	<input type="text" name="website" id="website" /><br />
-
 	<label for="description">Description</label>
 	<input type="text" name="description" id="description" /><br />
 
