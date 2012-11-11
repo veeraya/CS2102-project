@@ -1,10 +1,11 @@
-<?php 
+<?php
 class Reviews extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('ReviewModel');
 		$this->load->model('RestaurantModel');
+		$this->load->model('CommentModel');
 	}
 
 	public function index(){
@@ -27,8 +28,13 @@ class Reviews extends CI_Controller{
 	}
 
 	public function viewByRestaurant($restaurantUrl){
+			$data['reviews'] = array();
 			$data['restaurant'] = $this->RestaurantModel->getRestaurantByUrl($restaurantUrl);
-			$data['reviews'] = $this->ReviewModel->getReviewsByRestaurant($restaurantUrl);
+			$reviews = $this->ReviewModel->getReviewsByRestaurant($restaurantUrl);
+			foreach ($reviews as $review){
+				$review['comments'] = $this->CommentModel->getCommentsByReviewUrl($review['url']);
+				array_push($data['reviews'], $review);
+			}
 			$this->load->view('templates/header');
 			$this->load->view('restaurants/reviews', $data);
 			$this->load->view('templates/footer');
