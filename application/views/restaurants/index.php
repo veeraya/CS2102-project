@@ -20,7 +20,7 @@
     <a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>/createReview">Submit a review</a><br />
 
     <!-- admin function -->
-    <?php if ($this->session->userdata['account_type'] == "admin"){
+    <?php if (isset($this->session->userdata['account_type']) && $this->session->userdata['account_type'] == "admin"){
         $editUrl = base_url()."index.php/restaurants/".$restaurant['url']."/edit";
         $deleteUrl = base_url()."index.php/restaurants/".$restaurant['url']."/delete";
         echo <<<"EOT"

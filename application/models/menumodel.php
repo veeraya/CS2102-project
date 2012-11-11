@@ -1,6 +1,6 @@
-<?php 
+<?php
 class MenuModel extends CI_Model {
-	
+
 	public function __construct(){
 		$this->load->database();
 		$this->load->model('RestaurantModel');
@@ -25,5 +25,9 @@ class MenuModel extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function delete($restaurantName, $restaurantPostalCode, $name){
+		$queryString = "DELETE FROM menu WHERE restaurant_name = ? AND restaurant_postal_code = ? AND name = ?";
+		$query = $this->db->query($queryString, array($restaurantName, $restaurantPostalCode, $name));
+	}
 }
  ?>

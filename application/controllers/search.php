@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Search extends CI_Controller{
 
 	public function __construct(){
@@ -9,11 +9,32 @@ load->database();
 
 	public function index(){
 		//how to do pagination???
-		$name =  $this->input->post('Name');
+		$name =  "%".$this->input->post('Name')."%";
+		$timing = "%".$this->input->post('timing')."%";
+		$phoneNumber = "%".$this->input->post('phoneNumber')."%";
 		$cuisine =  $this->input->post('cuisine');
 		$location =  $this->input->post('location');
-		
-		$queryString = "SELECT * FROM restaurants WHERE ";
+
+		$queryString = "SELECT * FROM restaurants WHERE name LIKE ? AND timing LIKE ? and phone LIKE ? ";
+		//both cuisine and location empty
+		if ($this->IsNullOrEmptyString($cuisine) && $this->IsNullOrEmptyString($location)){
+			$query = $this->db->query($queryString, array($name, $timing, $phoneNumber));
+		}
+		else if ($this->IsNullOrEmptyString($cuisine) && !$this->IsNullOrEmptyString($location)){
+			$queryString = $queryString."AND location = ?";
+			$query = $this->db->query($queryString, array($name, $timing, $phoneNumber, $location));
+		}
+		else if (!$this->IsNullOrEmptyString($cuisine) && $this->IsNullOrEmptyString($location)){
+			$queryString = $queryString."AND cuisine = ?";
+			$query = $this->db->query($queryString, array($name, $timing, $phoneNumber, $cuisine));
+		}
+		else if (!$this->IsNullOrEmptyString($cuisine) && !$this->IsNullOrEmptyString($location)){
+			$queryString = $queryString."AND cuisine = ? AND locaiton = ?";
+			$query = $this->db->query($queryString, array($name, $timing, $phoneNumber, $cuisine, $location));
+		}
+
+
+		/*$queryString = "SELECT * FROM restaurants WHERE ";
 		if (!$this->IsNullOrEmptyString($name) && !$this->IsNullOrEmptyString($cuisine) && !$this->IsNullOrEmptyString($location)){
 			$name = "%".$name."%";
 			$queryString = "SELECT * FROM restaurants WHERE name LIKE ? AND cuisine = ? AND location = ?";
@@ -48,14 +69,14 @@ load->database();
 		}
 		else {
 			redirect('/');
-		}
+		}*/
 
-		$restaurants = $query->result_array();	
+		$restaurants = $query->result_array();
 		$results = array();
 		foreach ($restaurants as $restaurant){
 			$ratingQueryString = "SELECT r.avg_food_rating, r.avg_service_rating, r.recommend_percent FROM ratings r WHERE restaurant_name = ? AND restaurant_postal_code = ?";
 			$ratingQuery  = $this->db->query($ratingQueryString, array($restaurant['name'],$restaurant['postal_code']));
-			
+
 			if ($ratingQuery->num_rows() > 0){
 				$rating = $ratingQuery->row_array();
 				$restaurant['food_rating'] = $rating['avg_food_rating'];
@@ -79,12 +100,12 @@ load->database();
 		$searchQuery =  "%".$this->input->post('freeTextSearch')."%";
 		$queryString = "SELECT * FROM restaurants WHERE name LIKE ? OR address LIKE ? OR cuisine LIKE ? OR postal_code LIKE ? OR location LIKE ?";
 		$query = $this->db->query($queryString, array($searchQuery,$searchQuery,$searchQuery,$searchQuery,$searchQuery));
-		$restaurants = $query->result_array();	
+		$restaurants = $query->result_array();
 		$results = array();
 		foreach ($restaurants as $restaurant){
 			$ratingQueryString = "SELECT r.avg_food_rating, r.avg_service_rating, r.recommend_percent FROM ratings r WHERE restaurant_name = ? AND restaurant_postal_code = ?";
 			$ratingQuery  = $this->db->query($ratingQueryString, array($restaurant['name'],$restaurant['postal_code']));
-			
+
 			if ($ratingQuery->num_rows() > 0){
 				$rating = $ratingQuery->row_array();
 				$restaurant['food_rating'] = $rating['avg_food_rating'];

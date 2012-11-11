@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Menu extends CI_Controller{
 
 	public function __construct(){
@@ -36,6 +36,12 @@ class Menu extends CI_Controller{
 	public function processCreate($restaurantUrl){
 		$this->MenuModel->create($restaurantUrl);
 		redirect('restaurants/'.$restaurantUrl);
+	}
+
+	public function delete($restaurantName, $restaurantPostalCode, $name){
+		var_dump(array($restaurantName, $restaurantPostalCode, $name));
+		$this->MenuModel->delete($restaurantName, $restaurantPostalCode, $name);
+		redirect('restaurants/'.url_title($restaurantName." ".$restaurantPostalCode, 'dash', TRUE));
 	}
 
 
