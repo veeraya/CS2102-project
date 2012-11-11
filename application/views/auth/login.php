@@ -1,6 +1,6 @@
 <!-- <div class="container_12">
 <form action="<?php echo base_url(); ?>index.php/auth/processLogin" method="post" name="processLogin">
-	
+
 	<?php if (!is_null($errorMsg)) echo $errorMsg; ?>
 	<label for="email">Email</label>
 	<input type="text" name="email" id="email"/><br />
@@ -14,12 +14,13 @@
 </div> -->
 <div class="wrapper">
   <div id="footer" class="clear" background = >
+  	<div style="color: red"><?php if (!is_null($errorMsg)) echo $errorMsg; ?></div><br />
     <div class="fl_left">
       <div class="about_us border">
 		<h2>Sign In</h2>
 		<form action="<?php echo base_url(); ?>index.php/auth/processLogin" method="post" name="processLogin">
-	
-			<?php if (!is_null($errorMsg)) echo $errorMsg; ?>
+
+
 			<label for="email">Email</label>
 			<input type="text" name="email" value="Email Address"/><br />
 
@@ -37,14 +38,14 @@
 
 			<?php echo form_open('users/create') ?>
 
-			<label for="title">Email</label> 
+			<label for="title">Email</label>
 			<input type="text" name="email" value="Email Address" />
-			<label for="username">Username</label> 
+			<label for="username">Username</label>
 			<input type="text" name="username" value="Username" />
-			<label for="password">Password</label> 
+			<label for="password">Password</label>
 			<input type="password" name="password" value="Password" />
 
-			<button type="submit" value="submit" float = "right"><span>SIGN UP</span></button> 
+			<button type="submit" value="submit" float = "right"><span>SIGN UP</span></button>
 
 		</form>
 	</div>

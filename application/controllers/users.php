@@ -47,9 +47,23 @@ class Users extends CI_Controller{
 			$this->load->view('templates/footer');
 		}
 		else{
-			$user = $this->UserModel->create();
-			$this->session->set_userdata($user);
-			redirect('users/view/'.$user['username']);
+			$username = $this->input->post('username');
+			$email = $this->input->post('email');
+			if ($this->UserModel->usernameExists($username)){
+				$errorMsg = "The username ".$username." is already taken.<br />";
+				$this->session->set_flashdata('errorMsg', $errorMsg);
+				redirect('auth/login');
+			}
+			elseif( $this->UserModel->emailExists($email)){
+				$errorMsg = $email." is already used to sign up. Please use another email.<br />";
+				$this->session->set_flashdata('errorMsg', $errorMsg);
+				redirect('auth/login');
+			}
+			else {
+				$user = $this->UserModel->create();
+				$this->session->set_userdata($user);
+				redirect('users/view/'.$user['username']);
+			}
 		}
 	}
 

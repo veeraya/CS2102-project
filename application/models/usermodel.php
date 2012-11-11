@@ -31,8 +31,26 @@ class UserModel extends CI_Model {
 		return $data;
 	}
 
+	public function usernameExists($username){
+		$queryString = "SELECT * FROM users WHERE username = ?";
+		$query = $this->db->query($queryString, array($username));
+		if ($query->num_rows() > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function emailExists($email){
+		$queryString = "SELECT * FROM users WHERE email = ?";
+		$query = $this->db->query($queryString, array($email));
+		if ($query->num_rows() > 0)
+			return true;
+		else
+			return false;
+	}
+
 	public function edit(){
-		
+
 		$data = array(
 			'oldUsername' => $this->input->post('oldUsername'),
 			'username' => $this->input->post('username'),
@@ -40,7 +58,7 @@ class UserModel extends CI_Model {
 			'password' => $this->input->post('password')
 			);
 
-		$queryString = "UPDATE users SET username = '".$data['username']."', email = '".$data['email']."', password = '".$data['password']."' WHERE username = '".$data['oldUsername']."'";  
+		$queryString = "UPDATE users SET username = '".$data['username']."', email = '".$data['email']."', password = '".$data['password']."' WHERE username = '".$data['oldUsername']."'";
 		$this->db->query($queryString);
 		return $data;
 	}
