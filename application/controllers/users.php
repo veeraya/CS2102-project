@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Users extends CI_Controller{
 
 	public function __construct(){
@@ -14,7 +14,7 @@ class Users extends CI_Controller{
 			$this->load->view('users/index', $data);
 		}
 		else redirect('auth/unauthorized');
-		
+
 	}
 
 	public function view($username){
@@ -32,7 +32,7 @@ class Users extends CI_Controller{
 			redirect('auth/login');
 		}
 	}
-	
+
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -49,7 +49,7 @@ class Users extends CI_Controller{
 		else{
 			$user = $this->UserModel->create();
 			$this->session->set_userdata($user);
-			redirect('users/view/'.$user[username]);
+			redirect('users/view/'.$user['username']);
 		}
 	}
 
@@ -61,7 +61,7 @@ class Users extends CI_Controller{
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('email', 'email', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required');
-		
+
 		$data['user'] = $this->UserModel->getUserByUsername($username);
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('templates/header');
@@ -72,13 +72,13 @@ class Users extends CI_Controller{
 		else{
 			$user = $this->UserModel->edit();
 			$this->session->set_userdata($user);
-			redirect('users/view/'.$user[username]);
+			redirect('users/view/'.$user['username']);
 		}
 	}
 
 	public function delete($username){
 		$this->UserModel->delete($username);
-		redirect('users/index'); 
+		redirect('users/index');
 	}
 }
  ?>
