@@ -1,6 +1,11 @@
 <div class="container_12">
-<?php $restaurantName = $reviews[0]['restaurant_name']; ?>
-<h2>All reviews for <?php  echo $restaurantName ?></h2>
+<?php
+    $_SESSION['back'] = current_url();
+    $restaurantName = $restaurant['name'];
+    $restaurantUrl = base_url().'index.php/restaurants/'.$restaurant['url'] ;
+?>
+
+<h2>All reviews for <a href="<?php echo $restaurantUrl ?>"><?php  echo $restaurantName ?></a></h2>
 
 <ul>
 <!-- Display each review and its commments -->
@@ -25,7 +30,12 @@
     <ul>
     <?php
         foreach ($review['comments'] as $comment){
-            echo "<li>".$comment['content']."</li>";
+            echo "<li>".$comment['content'];
+            if (isset($this->session->userdata['email']) && isset($this->session->userdata['account_type']) && ($this->session->userdata['email'] == $review['user_email'] || $this->session->userdata['account_type'] == "admin")){
+                $deleteUrl = base_url()."index.php/comments/delete/".$comment['id'];
+                echo "   <a href=\"$deleteUrl\">DELETE</a>";
+            }
+            echo "</li>";
         }
 	 ?>
     </ul>

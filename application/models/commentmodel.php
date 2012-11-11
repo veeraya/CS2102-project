@@ -32,9 +32,9 @@ class CommentModel extends CI_Model {
     }
 
 
-    public function delete($restaurantName, $restaurantPostalCode, $name){
-        $queryString = "DELETE FROM menu WHERE restaurant_name = ? AND restaurant_postal_code = ? AND name = ?";
-        $query = $this->db->query($queryString, array($restaurantName, $restaurantPostalCode, $name));
+    public function delete($id){
+        $queryString = "DELETE FROM comments WHERE id = ".$id;
+        $query = $this->db->query($queryString);
     }
 }
  ?>

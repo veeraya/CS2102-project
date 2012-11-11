@@ -20,14 +20,13 @@ class Comments extends CI_Controller{
 
     public function create($reviewUrl){
         $this->CommentModel->create($reviewUrl);
-        redirect($_SESSION['HTTP_REFERER']);
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
 
-    public function delete($restaurantName, $restaurantPostalCode, $name){
-        var_dump(array($restaurantName, $restaurantPostalCode, $name));
-        $this->MenuModel->delete($restaurantName, $restaurantPostalCode, $name);
-        redirect('restaurants/'.url_title($restaurantName." ".$restaurantPostalCode, 'dash', TRUE));
+    public function delete($id){
+        $this->CommentModel->delete($id);
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
 
