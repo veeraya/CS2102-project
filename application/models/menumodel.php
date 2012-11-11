@@ -15,8 +15,9 @@ class MenuModel extends CI_Model {
 		$description =  $this->input->post('description');
 		$restaurantName =  $restaurant['name'];
 		$restaurantPostalCode =   $restaurant['postal_code'];
-		$queryString = "INSERT INTO menu (name, price, type, cuisine, description, restaurant_name, restaurant_postal_code) VALUE(?,?,?,?,?,?,?)";
-		$this->db->query($queryString, array($name, $price, $type, $cuisine, $description, $restaurantName, $restaurantPostalCode));
+		$url = url_title($name." ".$restaurantName." ".$restaurantPostalCode, 'dash', TRUE);
+		$queryString = "INSERT INTO menu (name, price, type, cuisine, description, restaurant_name, restaurant_postal_code, url) VALUE(?,?,?,?,?,?,?,?)";
+		$this->db->query($queryString, array($name, $price, $type, $cuisine, $description, $restaurantName, $restaurantPostalCode, $url));
 	}
 
 	public function getMenuByRestaurant($restaurantName, $restaurantPostalCode){
@@ -25,9 +26,9 @@ class MenuModel extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function delete($restaurantName, $restaurantPostalCode, $name){
-		$queryString = "DELETE FROM menu WHERE restaurant_name = ? AND restaurant_postal_code = ? AND name = ?";
-		$query = $this->db->query($queryString, array($restaurantName, $restaurantPostalCode, $name));
+	public function delete($url){
+		$queryString = "DELETE FROM menu WHERE url = ?";
+		$query = $this->db->query($queryString, array($url));
 	}
 }
  ?>

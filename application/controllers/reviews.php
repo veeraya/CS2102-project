@@ -10,7 +10,12 @@ class Reviews extends CI_Controller{
 
 	public function index(){
 		if ($this->session->userdata('account_type') == "admin"){
-			$data['reviews'] = $this->ReviewModel->getAllReviews();
+			$data['reviews'] = array();
+			$reviews = $this->ReviewModel->getAllReviews();
+			foreach ($reviews as $review){
+				$review['comments'] = $this->CommentModel->getCommentsByReviewUrl($review['url']);
+				array_push($data['reviews'], $review);
+			}
 			$this->load->view('templates/header');
 			$this->load->view('reviews/index', $data);
 			$this->load->view('templates/footer');

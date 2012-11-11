@@ -35,7 +35,7 @@ EOT;
 
     <!-- admin delete menu function -->
     <?php if (isset($this->session->userdata['account_type']) && $this->session->userdata['account_type'] == "admin"){
-        $deleteUrl = base_url()."index.php/menu/delete/".$restaurant['name']."/".$restaurant['postal_code']."/".$m['name'];
+        $deleteUrl = base_url()."index.php/menu/delete/".$m['url'];
         echo "<a href=\"$deleteUrl\">Delete</a>";
     } ?>
 
