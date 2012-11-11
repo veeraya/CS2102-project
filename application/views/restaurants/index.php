@@ -1,5 +1,9 @@
 <div class="container_12">
+<br />
 <a href="restaurants/create"><button type="button" class="btn btn-primary">Add a restaurant</button></a>
+<?php if ($restaurants == null) {?>
+    <h1>0 restaurants found.</h1>
+<?php } ?>
 <?php foreach ($restaurants as $restaurant): ?>
 
     <h3><a href="<?php echo base_url(); ?>index.php/restaurants/<?php echo $restaurant['url'] ?>"><?php echo $restaurant['name'] ?></a></h3>
