@@ -18,8 +18,8 @@ body{
 	padding:0;
 	font-size:13px;
 	font-family:Georgia, "Times New Roman", Times, serif;
-	color:#CCCCCC;
-	background-color:#333333;
+	color:black;
+	background-color:whitesmoke;
 	}
 
 img{margin:0; padding:0; border:none;}
@@ -486,7 +486,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 #tabcontainer ul#tabnav .last{
 	margin-right:0;
 	}
-	
+
 /* --jQuery Tabs Specific - Only modify if you know what you are doing---*/
 
 .ui-tabs{}

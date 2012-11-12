@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" style="background-color: #333">
   <div id="footer" class="clear">
     <div class="fl_left">
       <div class="about_us border">
